@@ -63,7 +63,7 @@ function copyToClipboard () {
 	
 	var name = document.getElementById('patient_name').value;
 	var diff = document.getElementsByName('uts_not_collected_c')[0].value;
-	var type="Prescription Refillxx";
+	var type="Prescription Refill";
 	if(diff!= "NotApplicableInPrescription"){
 	type="Patient Encounter";
 	}
@@ -316,16 +316,16 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 <input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  > 0   )} checked {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD)
 </td><td  style="width:33.3%;">
 <select name='risklvl_c'  id='risklvl_c' >
-<option label="0-LOW" value="0" selected="selected">0-LOW</option>
-<option label="1-LOW" value="1">1-LOW</option>
+<option label="0-LOW" value="0" {if ( $datarow.risklvl_c  >= 0 AND  $datarow.risklvl_c  < 4  )} selected="selected" {/if} >LOW</option>
+<!--option label="1-LOW" value="1">1-LOW</option>
 <option label="2-LOW" value="2">2-LOW</option>
 <option label="3-LOW" value="3">3-LOW</option>
-<option label="4-MEDIUM" value="4">4-MEDIUM</option>
-<option label="5-MEDIUM" value="5">5-MEDIUM</option>
-<option label="6-MEDIUM" value="6">6-MEDIUM</option>
+<option label="4-MEDIUM" value="4">4-MEDIUM</option-->
+<option label="5-MEDIUM" value="5" {if ( $datarow.risklvl_c  >= 4 AND  $datarow.risklvl_c  < 7  )} selected="selected" {/if} >MODERATE</option>
+<!--option label="6-MEDIUM" value="6">6-MEDIUM</option>
 <option label="7-HIGH" value="7">7-HIGH</option>
-<option label="8-HIGH" value="8">8-HIGH</option>
-<option label="9-HIGH" value="9">9-HIGH</option>
+<option label="8-HIGH" value="8">8-HIGH</option-->
+<option label="9-HIGH" value="9" {if ( $datarow.risklvl_c  >= 7   )} selected="selected" {/if} >HIGH</option-->
 </select>
 </td></tr>
 
@@ -750,7 +750,7 @@ weekNumbers:false
 <tr><td>
 <img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
 <input type="hidden" name="pt_confirms_taking_c" value="0">
-<input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked {/if}> &nbsp;Patient confirms taking medications as prescribed
+<input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  > 0   )} checked {/if}> &nbsp;Patient confirms taking medications as prescribed
 </td></tr>
 
 <tr><td>
@@ -915,7 +915,7 @@ class="yui-navset"
 <input accesskey=""  type="hidden" name="uts_not_collected_c" size="30" maxlength="255" value="NotApplicableInPrescription" title="">
 <input type='hidden' name='reg_patient_reg_encounterreg_patient_ida' id='reg_patient_reg_encounterreg_patient_ida' >
 <input type='hidden' name='date_last_modified' id='date_last_modified' >
-<input type='hidden' name='pcp_name_c' id='pcp_name_c' value=''>
+<input type='hidden' name='pcp_name_c' id='pcp_name_c' value='{$provrow.provname}'>
 <input  type="hidden" name="pt_active_c" value="0">
 <input type="checkbox" style="display:none" id="pt_active_c" name="pt_active_c" value="1"  checked="" >
 

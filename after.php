@@ -7,28 +7,46 @@ function after (&$bean, $event, $arguments)
 {
 
 $id=$bean->reg_patient_reg_encounterreg_patient_ida;
+
+	
+$reg_patient = new reg_patient();
+$reg_patient->retrieve($bean->reg_patient_reg_encounterreg_patient_ida);	
+
 if($bean->uts_not_collected_c != "NotApplicableInPrescription")
 	{
 	//header("Location: index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DREG_Patient%26action%3DPatientEncounter%26record%3D".$bean->reg_patient_reg_encounterreg_patient_ida); 
-	header("Location: index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DREG_Patient%26action%3Dindex%26parentTab%3DRegistry"); 
+	
 	$id="E".$id;	
 	}
 	else{
-	header("Location: index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DREG_Patient%26action%3Dindex%26parentTab%3DRegistry"); 
-	$id="P".$id;	
-	}
 	
+	$id="P".$id;	
+	}	
+
 if(isset($_SESSION[$id.'indication'])){
 
-$reg_patient = new reg_patient(); //in your case .... new aCase(); 
-$reg_patient->retrieve($bean->reg_patient_reg_encounterreg_patient_ida);// if you don't know the id - search to find
+ //in your case .... new aCase(); 
+// if you don't know the id - search to find
 if($reg_patient->assistant != $_SESSION[$id.'indication'])
 {
 $reg_patient->assistant = $_SESSION[$id.'indication'];
-$reg_patient->save();
+
 }
+
+
 unset($_SESSION[$id.'indication']);
 } 
+
+
+$reg_patient->risk_patient_c = $bean->risklvl_c;
+$reg_patient->next_rx_refill_due_patient_c = $bean->next_rx_refill_due_c;
+$reg_patient->save();
+	
+	
+	
+	//header("Location: index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DREG_Patient%26action%3DPatientEncounter%26record%3D".$bean->reg_patient_reg_encounterreg_patient_ida); 
+header("Location: index.php?action=ajaxui#ajaxUILoc=index.php%3Fmodule%3DREG_Patient%26action%3Dindex%26parentTab%3DRegistry");
+	
 
 	
 if(isset($_SESSION[$id.'summary'])){unset($_SESSION[$id.'summary']);} 
