@@ -72,13 +72,13 @@ function copyToClipboard () {
 	var summary = document.getElementById('summary').value;
 	if(summary==""){
 	summary= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Encounter Summary: " +summary+"\r\n";
 	
     var history = document.getElementById('history_c').value;
 	if(history==""){
 	history= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Notes: " +history+"\r\n";
 	
 	/*var assessment = document.getElementById('assessment_summary_c').value;
@@ -91,7 +91,7 @@ function copyToClipboard () {
 	var daysdispensed = document.getElementById('pills_bottle_disp_c').value;
 	if(daysdispensed==""){
 	daysdispensed= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Days of refill dispensed: " +daysdispensed+"\r\n";
 	
 	
@@ -99,68 +99,68 @@ function copyToClipboard () {
 	var nextRx = document.getElementById('next_rx_refill_due_c').value;
 	if(nextRx==""){
 	nextRx= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Next Rx refill: " +nextRx+"\r\n";
 
 	var lastUTS = document.getElementById('last_uts_c').value;
 	if(lastUTS==""){
 	lastUTS= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Date of last UTS: " +lastUTS+"\r\n";
 
 	var nextUTS = document.getElementById('next_uts_due_c').value;
 	if(nextUTS==""){
 	nextUTS= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Next UTS: " +nextUTS+"\r\n";
 
 	var lastPCP = document.getElementById('last_pcp_visit_c').value;
 	if(lastPCP==""){
 	lastPCP= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Last PCP visit: " +lastPCP+"\r\n";
 	
 	var nextPCP = document.getElementById('next_pcp_visit_c').value;
 	if(nextPCP==""){
 	nextPCP= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Next PCP visit: " +nextPCP+"\r\n";
 
 	var lastNCMVisit = document.getElementById('last_pain_nurse_visit_c').value;
 	if(lastNCMVisit==""){
 	lastNCMVisit= "Information Not Available"
-	}
+	} else
 	appendTxt =appendTxt + "Last NCM Visit: " +lastNCMVisit+"\r\n";
 	
 	var lastNCMContact = document.getElementById('last_nurse_phone_contact_c').value;
 	if(lastNCMContact==""){
-	lastNCMContact= "Information Not Available"
-	}
+	lastNCMContact= "Information Not Available";
+	} else
 	appendTxt =appendTxt + "Last NCM Contact: " +lastNCMContact+"\r\n";
 
 	var nextNCM = document.getElementById('nxt_appt_pain_c').value;
 	if(nextNCM==""){
-	nextNCM= "Information Not Available"
-	}
+	nextNCM= "Information Not Available";
+	} else
 	appendTxt =appendTxt + "Next NCM Visit: " +nextNCM+"\r\n";
 	
 	var lastPMP = document.getElementById('last_pmp_review_done_c').value;
 	if(lastPMP==""){
-	lastPMP= "Information Not Available"
-	}
+	lastPMP= "Information Not Available";
+	} else
 	appendTxt =appendTxt + "Last PMP review: " +lastPMP+"\r\n";
 	
 	var nextPMP = document.getElementById('next_pmp_review_due_c').value;
-	if(nextPMP==""){
-	nextPMP= "Information Not Available"
-	}
+	//if(nextPMP==""){
+	//nextPMP= "Information Not Available";
+	//}
 	
 	var combine = document.getElementById('next_appt_other_c').value;
 	if(combine==""){
-	appendTxt =appendTxt + "Next PMP visit: " +nextPMP+"\r\n";
+		if(nextPMP!="") appendTxt =appendTxt + "Next PMP visit: " +nextPMP+"\r\n";
 	}
 	else{
-	appendTxt =appendTxt + "Next PMP visit: " +nextPMP+"\r\n";
+		if(nextPMP!="") appendTxt =appendTxt + "Next PMP visit: " +nextPMP+"\r\n";
       var values_of = combine.split('#');
 	  for (var i=0;i<values_of.length;i++){
 	  var values_indi = values_of[i].split(',');
@@ -174,71 +174,84 @@ function copyToClipboard () {
 	}
 
 	 appendTxt=appendTxt+"\r\n"+"Safety Review "+"\r\n";
-	 appendTxt=appendTxt +"Pulmonary Problems (O2DEP, OSA, COPD): "	
+	 
 	if( document.getElementById('med_safety_pulm_prob_c').checked)
 	{
-	 appendTxt=appendTxt +"YES"+"\r\n";	
+		appendTxt=appendTxt +"Pulmonary Problems (O2DEP, OSA, COPD): "	;
+		appendTxt=appendTxt +"YES"+"\r\n";	
 	} else {
-	 appendTxt=appendTxt +"NO"+"\r\n";		
+	 //appendTxt=appendTxt +"NO"+"\r\n";		
 	}
-	 appendTxt=appendTxt +"Taking Sedative Meds: "		
+	 	
 	if( document.getElementById('med_safety_sedatives_c').checked)
 	{
+	 appendTxt=appendTxt +"Taking Sedative Meds: "	;
 	 appendTxt=appendTxt +"YES"+"\r\n";	
 	} else {
-	 appendTxt=appendTxt +"NO"+"\r\n";		
+	 //appendTxt=appendTxt +"NO"+"\r\n";		
 	}
-	 appendTxt=appendTxt +"(>50) MEDD: "		
+	
+	
+	
 	if( document.getElementById('med_safety_high_medd_c').checked)
 	{
+	 appendTxt=appendTxt +"(>50) MEDD:  ";		
 	 appendTxt=appendTxt +"YES"+"\r\n";	
 	} else {
-	 appendTxt=appendTxt +"NO"+"\r\n";		
+	 //appendTxt=appendTxt +"NO"+"\r\n";		
 	}
 
+	
 	var risklevel = document.getElementById('risklvl_c').value;
 	if(risklevel==""){
-	risklevel= "Information Not Available"
-	}
-	appendTxt =appendTxt + "Risk Level: " +risklevel+"\r\n";
+	risklevel= "Information Not Available";
+	} 
+	var risktext;
+	var newrisk = 0;
+	newrisk = parseInt(risklevel);
+	if (newrisk >= 0 && newrisk <= 3) risktext = 'LOW';
+	if (newrisk >= 4 && newrisk <= 6) risktext = 'MODERATE';
+	if (newrisk > 7) risktext = 'HIGH';
+	
+	appendTxt =appendTxt + "Risk Level: " +risktext+"\r\n";
 	
 	
 	appendTxt=appendTxt+"\r\n"+"Contract "+"\r\n";
 	
-	appendTxt=appendTxt +"Aberrant behavior noted: ";	
+	//appendTxt=appendTxt +"Aberrant behavior noted: ";	
 	if( document.getElementById('aberrant_behavior_noted_c').checked)
 	{
-	 appendTxt=appendTxt +"YES"+"\r\n";	
+	 appendTxt=appendTxt +"Aberrant behavior noted: YES"+"\r\n";	
 	} else {
-	 appendTxt=appendTxt +"NO"+"\r\n";		
+	 //appendTxt=appendTxt +"NO"+"\r\n";		
 	}
-	appendTxt=appendTxt +"Patient confirms taking medications as prescribed: ";	
+	//appendTxt=appendTxt +"Patient confirms taking medications as prescribed: ";	
 	if( document.getElementById('pt_confirms_taking_c').checked)
 	{
-	 appendTxt=appendTxt +"YES"+"\r\n";	
+	 appendTxt=appendTxt +"Patient confirms taking medications as prescribed:YES"+"\r\n";	
 	} else {
-	 appendTxt=appendTxt +"NO"+"\r\n";		
+	 //appendTxt=appendTxt +"NO"+"\r\n";		
 	}
-	appendTxt=appendTxt +"Patient confirms storing medications safely: ";
+	//appendTxt=appendTxt +"Patient confirms storing medications safely: ";
 	if( document.getElementById('pt_confirms_storing_c').checked)
 	{
-	 appendTxt=appendTxt +"YES"+"\r\n";	
+	 appendTxt=appendTxt +"Patient confirms storing medications safely: YES"+"\r\n";	
 	} else {
-	 appendTxt=appendTxt +"NO"+"\r\n";		
+	 //appendTxt=appendTxt +"NO"+"\r\n";		
 	}
 	
 	if(document.getElementById('narcotic_contract_in_chart_c').checked){
 	var signeddate = document.getElementById('narcotic_contract_sign_c').value;
 	if(signeddate==""){
 	signeddate= "Information Not Available"
-	}	
+	}else 	
 	appendTxt=appendTxt +"Controlled substance agreement signed: "+signeddate;
 	}
 	
 	if (window.clipboardData) // Internet Explorer
     {  
         window.clipboardData.setData("Text", appendTxt);
-		alert ("Text Copied to Clipboardxx");
+		alert ("Text Copied to Clipboard");
     }
     else
 	{
@@ -253,7 +266,7 @@ function copyToClipboard () {
 <script>
 window.onload = function()
   {
-    //document.getElementById('last_uts_c').value='yaw';
+     //alert( {/literal} '{$smarty.session.regnamesort}'); {literal}
 	  var combine = {/literal} '{$datarow.next_appt_other_c}'; {literal}
 	  
       var values_of = combine.split('#');
@@ -269,8 +282,28 @@ window.onload = function()
  
 
 </script>
+
+<script type="text/javascript">
+var a = document.getElementById( "shortcuts" );
+a.style.display = "none";
+a = document.getElementById( "lastView" );
+a.style.display = "none";
+a = document.getElementById( "globalLinks" );
+a.style.display = "none";
+a = document.getElementById( "sitemapLink" );
+a.style.display = "none";
+a = document.getElementById( "search" );
+a.style.display = "none";
+</script>
+
  {/literal}	
 
+{php}
+
+session_start();
+// store session data
+if (!empty($_POST['regnamesort'])) $_SESSION['regnamesort']=$_POST['regnamesort'];
+{/php}
 
 <div class="clear"></div>
 <form action="index.php" method="POST" name="{$form_name}" id="{$form_id}" {$enctype}>
@@ -281,7 +314,8 @@ window.onload = function()
 <td style="width:50%;border-color: rgb( 100, 100, 255); border-style: solid solid solid none; border-width: 2px; margin-top: 0;vertical-align: top;" colspan="3" >
 <table style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
 <tr >
-<td  width="66.6%" >Encounter Summary <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="" title=""  onblur="set_session(this.id,this.value);">
+{assign var=pro_summary value=":"|explode:$datarow.summary} 
+<td  width="66.6%" >Encounter Summary <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{$pro_summary[1]}" title=""  onblur="set_session(this.id,this.value);">
 </td>
 <td  style="width:33.3%;">
 Patient Present   <input  valign="bottom" accesskey=""  type="hidden" name="patient_present_c" value="0"><input tabindex="08"  type="checkbox" id="patient_present_c" name="patient_present_c" value="1" title="" >
@@ -292,7 +326,7 @@ Patient Present   <input  valign="bottom" accesskey=""  type="hidden" name="pati
 <table >
 <tr>
 <td width:100% colspan="3" scope="col">Notes<br>
-<textarea autofocus  tabindex="12" name="history_c" id="history_c" rows="12" cols="100" maxlength="2000" ></textarea>
+<textarea autofocus  tabindex="12" name="history_c" id="history_c" rows="12" cols="100" maxlength="20000" >{if  ($notes_flag == "true")} {$datarow.history_c} {/if}</textarea>
 </td>
 </tr>
 <tr>
@@ -312,33 +346,34 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 <tr>
 <tr><td>
 <br>
-<input type="hidden" name="med_safety_pulm_prob_c" value="0">
-<input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  > 0   )} checked {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD)
+<input type="hidden" name="med_safety_pulm_prob_cx" value="0">
+
+<input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  > 0   )}  checked="checked" {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD)
 </td><td  style="width:33.3%;">
 <select name='risklvl_c'  id='risklvl_c' >
-<option label="0-LOW" value="0" {if ( $datarow.risklvl_c  >= 0 AND  $datarow.risklvl_c  < 4  )} selected="selected" {/if} >LOW</option>
+<option label="LOW" value="0" {if ( $datarow.risklvl_c  >= 0 AND  $datarow.risklvl_c  < 4  )} selected="selected" {/if} >LOW</option>
 <!--option label="1-LOW" value="1">1-LOW</option>
 <option label="2-LOW" value="2">2-LOW</option>
 <option label="3-LOW" value="3">3-LOW</option>
 <option label="4-MEDIUM" value="4">4-MEDIUM</option-->
-<option label="5-MEDIUM" value="5" {if ( $datarow.risklvl_c  >= 4 AND  $datarow.risklvl_c  < 7  )} selected="selected" {/if} >MODERATE</option>
+<option label="MODERATE" value="5" {if ( $datarow.risklvl_c  >= 4 AND  $datarow.risklvl_c  < 7  )} selected="selected" {/if} >MODERATE</option>
 <!--option label="6-MEDIUM" value="6">6-MEDIUM</option>
 <option label="7-HIGH" value="7">7-HIGH</option>
 <option label="8-HIGH" value="8">8-HIGH</option-->
-<option label="9-HIGH" value="9" {if ( $datarow.risklvl_c  >= 7   )} selected="selected" {/if} >HIGH</option-->
+<option label="HIGH" value="9" {if ( $datarow.risklvl_c  >= 7   )} selected="selected" {/if} >HIGH</option-->
 </select>
 </td></tr>
 
 <tr><td>
 <img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-<input type="hidden" name="med_safety_sedatives_c" value="0">
-<input type="checkbox" tabindex="84" id="med_safety_sedatives_c" name="med_safety_sedatives_c" value="1" title=""   {if ( $datarow.med_safety_sedatives_c  > 0   )} checked {/if} > &nbsp;Taking Sedative Meds
+<input type="hidden" name="med_safety_sedatives_cx" value="0">
+<input type="checkbox" tabindex="84" id="med_safety_sedatives_c" name="med_safety_sedatives_c" value="1" title=""   {if ( $datarow.med_safety_sedatives_c  > 0   )} checked="checked" {/if}  > &nbsp;Taking Sedative Meds
 </td></tr>
 
 <tr><td>
 <img src= "" height="1" width ="1" alt="" vspace="4"/><br/>
-<input type="hidden" name="med_safety_high_medd_c" value="0">
-<input type="checkbox" tabindex="88" id="med_safety_high_medd_c" name="med_safety_high_medd_c"  value="1" title=""    {if ( $datarow.amed_safety_high_medd_c  > 0   )} checked {/if} > &nbsp;(>50) MEDD
+<input type="hidden" name="med_safety_high_medd_cx" value="0">
+<input type="checkbox" tabindex="88" id="med_safety_high_medd_c" name="med_safety_high_medd_c"  value="1" title=""    {if ( $datarow.med_safety_high_medd_c  > 0   )} checked="checked" {/if}  > &nbsp;(>50) MEDD
 </td></tr>
 
 </tr>
@@ -392,7 +427,7 @@ function check_date(element){
 }
 </script>
 {/literal}
-<pre style="margin-top:0; margin-bottom:0;"><input class="date_input" autocomplete="off" tabindex="24" type="text" name="next_rx_refill_due_c" onchange='check_date(this);' id="next_rx_refill_due_c" value="{$datarow.last_pcp_visit_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_rx_refill_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_rx_refill_due_c_trigger"></pre>
+<pre style="margin-top:0; margin-bottom:0;"><input class="date_input" autocomplete="off" tabindex="24" type="text" name="next_rx_refill_due_c" onchange='check_date(this);' id="next_rx_refill_due_c" value="{$datarow.next_rx_refill_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_rx_refill_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_rx_refill_due_c_trigger"></pre>
 </span>
 {literal}
 <script type="text/javascript">
@@ -743,23 +778,23 @@ weekNumbers:false
 
 <tr><td>
 <br>
-<input type="hidden" name="aberrant_behavior_noted_c" value="0">
-<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked {/if}   > &nbsp;Aberrant Behavior Noted
+<input type="hidden" name="aberrant_behavior_noted_cx" value="0">
+<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted
 </td></tr>
 
 <tr><td>
 <img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-<input type="hidden" name="pt_confirms_taking_c" value="0">
-<input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  > 0   )} checked {/if}> &nbsp;Patient confirms taking medications as prescribed
+<input type="hidden" name="pt_confirms_taking_cx" value="0">
+<input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed
 </td></tr>
 
 <tr><td>
 <img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-<input type="hidden" name="pt_confirms_storing_c" value="0"><input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  > 0   )} checked {/if} > &nbsp;Patient confirms storing medications safely
+<input type="hidden" name="pt_confirms_storing_cx" value="0"><input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely
 </td></tr>
 
 <tr><td>
-<input type="hidden" name="narcotic_contract_in_chart_c" value="0"><input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  > 0   )} checked {/if} > <span> &nbsp;Controlled Substance Agreement signed on </span><span class="dateTime"> <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
+<input type="hidden" name="narcotic_contract_in_chart_cx" value="0"><input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  > 0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><span class="dateTime"> <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
 <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger">
 </span>
 {literal}
