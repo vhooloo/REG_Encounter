@@ -12,6 +12,7 @@ if($bean->uts_not_collected_c != "NotApplicableInPrescription")
 	{
 		echo $bean->summary;
 	$bean->summary="PEnc:".$bean->summary;
+	$bean->last_pain_nurse_visit_c = date("Y-m-d"); //if encounter default last visit date 
 	}
 	else{
 	
@@ -19,7 +20,7 @@ if($bean->uts_not_collected_c != "NotApplicableInPrescription")
 	$bean->summary="RxRF:".$bean->summary;
 	
 	}
-
+    $bean->last_pain_nurse_visit_c = date("Y-m-d");
 }
 
 }

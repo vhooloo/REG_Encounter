@@ -135,6 +135,10 @@ $dictionary["REG_Encounter"]["fields"]["reg_patient_reg_encounterreg_patient_ida
 
  
 
+ // created: 2013-11-27 08:09:52
+
+ 
+
  // created: 2013-09-17 10:55:04
 
  
@@ -160,6 +164,10 @@ $dictionary["REG_Encounter"]["fields"]["reg_patient_reg_encounterreg_patient_ida
  
 
  // created: 2013-09-17 10:55:08
+
+ 
+
+ // created: 2013-11-17 18:35:34
 
  
 
@@ -247,6 +255,10 @@ $dictionary["REG_Encounter"]["fields"]["reg_patient_reg_encounterreg_patient_ida
 
  
 
+ // created: 2013-11-17 18:36:49
+
+ 
+
  // created: 2013-09-17 10:55:21
 
  
@@ -268,6 +280,10 @@ $dictionary["REG_Encounter"]["fields"]["reg_patient_reg_encounterreg_patient_ida
  
 
  // created: 2013-09-17 10:55:24
+
+ 
+
+ // created: 2013-11-27 08:10:49
 
  
 

@@ -329,6 +329,8 @@ Patient Present   <input  valign="bottom" accesskey=""  type="hidden" name="pati
 <textarea autofocus  tabindex="12" name="history_c" id="history_c" rows="12" cols="100" maxlength="20000" >{if  ($notes_flag == "true")} {$datarow.history_c} {/if}</textarea>
 </td>
 </tr>
+<!-- only for refill -->
+{if ($encountype == "refill") }
 <tr>
 <td style="width:33.3%;" ><br/>
 Days Dispensed <input type="text" tabindex="16"  name="pills_bottle_disp_c" id="pills_bottle_disp_c" size="4" maxlength="4" value="{$datarow.pills_bottle_disp_c}" title="">
@@ -337,6 +339,15 @@ Days Dispensed <input type="text" tabindex="16"  name="pills_bottle_disp_c" id="
 Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" name="presc_refill_early_c" value="0"><input tabindex="16"  type="checkbox" id="presc_refill_early_c" name="presc_refill_early_c" value="1" title=""  >
 </td>
 </tr>
+{/if}
+<!-- only for refill -->
+<!-- only for encounter -->
+{if ($encountype == "encounter") }
+<tr>
+<td style="width:33.3%;" ><br/>
+<input type="checkbox" tabindex="80" id=" 	pt_ben_opioid_c" name="pt_ben_opioid_c" value="1" title=""   {if ( $datarow.pt_ben_opioid_c  > 0   )}  checked="checked" {/if} >&nbsp; Patient Benefits from Opioids 
+</td></tr>
+{/if}
 </table >
 
 
@@ -351,7 +362,8 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 <input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  > 0   )}  checked="checked" {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD)
 </td><td  style="width:33.3%;">
 <select name='risklvl_c'  id='risklvl_c' >
-<option label="LOW" value="0" {if ( $datarow.risklvl_c  >= 0 AND  $datarow.risklvl_c  < 4  )} selected="selected" {/if} >LOW</option>
+<option label="NA" value="-1" {if ( ($datarow.risklvl_c  < 0)  OR ($datarow.risklvl_c) =="" )} selected="selected" {/if} >NA</option>
+<option label="LOW" value="0" {if ( ($datarow.risklvl_c != "") AND $datarow.risklvl_c  >= 0 AND  $datarow.risklvl_c  < 4  )} selected="selected" {/if} >LOW</option>
 <!--option label="1-LOW" value="1">1-LOW</option>
 <option label="2-LOW" value="2">2-LOW</option>
 <option label="3-LOW" value="3">3-LOW</option>
@@ -368,13 +380,25 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 <img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
 <input type="hidden" name="med_safety_sedatives_cx" value="0">
 <input type="checkbox" tabindex="84" id="med_safety_sedatives_c" name="med_safety_sedatives_c" value="1" title=""   {if ( $datarow.med_safety_sedatives_c  > 0   )} checked="checked" {/if}  > &nbsp;Taking Sedative Meds
-</td></tr>
+</td>
+<td>
+<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
+<input type="checkbox" tabindex="84" id="shortacting_c" name="shortacting_c" value="1" title=""   {if ( $datarow.shortacting_c  > 0   )} checked="checked" {/if}  > &nbsp;Multiple Short Acting Opioids
+</td>
+
+</tr>
 
 <tr><td>
 <img src= "" height="1" width ="1" alt="" vspace="4"/><br/>
 <input type="hidden" name="med_safety_high_medd_cx" value="0">
 <input type="checkbox" tabindex="88" id="med_safety_high_medd_c" name="med_safety_high_medd_c"  value="1" title=""    {if ( $datarow.med_safety_high_medd_c  > 0   )} checked="checked" {/if}  > &nbsp;(>50) MEDD
-</td></tr>
+</td>
+<td>
+<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
+<input type="checkbox" tabindex="84" id="longacting_c" name="longacting_c" value="1" title=""   {if ( $datarow.longacting_c  > 0   )} checked="checked" {/if}  > &nbsp;Multiple Long Acting Opioids
+</td>
+
+</tr>
 
 </tr>
 </table >
@@ -450,7 +474,7 @@ weekNumbers:false
 <td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;margin-left: 5px;vertical-align: top;">
 &nbsp;Last PCP visit
 <span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-<input class="date_input" tabindex="36" autocomplete="off" type="text" name="last_pcp_visit_c" id="last_pcp_visit_c" value="{$datarow.last_pcp_visit_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.last_pcp_visit_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pcp_visit_c_trigger"> </pre>
+<input class="date_input" tabindex="36" autocomplete="off" type="text" name="last_pcp_visit_c" id="last_pcp_visit_c" value="{$datarow.last_pcp_visit_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pcp_visit_c_trigger"> </pre>
 </span>
 {literal}
 <script type="text/javascript">
@@ -471,7 +495,7 @@ weekNumbers:false
 </td><td>
 &nbsp;Last PMP Review
 <span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-<input class="date_input" tabindex="52" autocomplete="off" type="text" name="last_pmp_review_done_c" id="last_pmp_review_done_c" value="{$datarow.last_pmp_review_done_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10"{if ( time() - strtotime($datarow.last_pmp_review_done_c)  > 0   )} style="color:red" {/if}  >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pmp_review_done_c_trigger"> </pre>
+<input class="date_input" tabindex="52" autocomplete="off" type="text" name="last_pmp_review_done_c" id="last_pmp_review_done_c" value="{$datarow.last_pmp_review_done_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10"  >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pmp_review_done_c_trigger"> </pre>
 </span>
 {literal}
 <script type="text/javascript">
@@ -500,7 +524,7 @@ weekNumbers:false
 <td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;""><br>
 &nbsp;Date of last UTS<br/>
 <span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-<input class="date_input" tabindex="28" autocomplete="off" type="text" name="last_uts_c"  id="last_uts_c" value="{$datarow.last_uts_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.last_uts_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_uts_c_trigger">&nbsp;&nbsp;</pre>
+<input class="date_input" tabindex="28" autocomplete="off" type="text" name="last_uts_c"  id="last_uts_c" value="{$datarow.last_uts_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10"  >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_uts_c_trigger">&nbsp;&nbsp;</pre>
 </span>
 {literal}
 <script type="text/javascript">
@@ -586,10 +610,11 @@ weekNumbers:false
 );
 </script>{/literal}
 
+</td>
 
-</td><td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"><br/>
+<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"><br/>
 &nbsp;Last NCM Visit<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-<input class="date_input" tabindex="44" autocomplete="off" type="text" name="last_pain_nurse_visit_c" id="last_pain_nurse_visit_c"  value="{$datarow.last_pain_nurse_visit_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.last_pain_nurse_visit_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pain_nurse_visit_c_trigger"> </pre></span>
+<input class="date_input" tabindex="44" autocomplete="off" type="text" name="last_pain_nurse_visit_c" id="last_pain_nurse_visit_c"  value="{$datarow.last_pain_nurse_visit_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pain_nurse_visit_c_trigger"> </pre></span>
 {literal}
 <script type="text/javascript">
 Calendar.setup ({
@@ -709,12 +734,32 @@ document.getElementById('pretty_date').value="";
 </td>
 </tr>
 <tr>
-<td  style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
+<!-- added pill count -->
+<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
+&nbsp;Next Pill Count <br>
+<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
+<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_pill_ct_c" id="next_pill_ct_c" value="{$datarow.next_pill_ct_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pill_ct_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pill_ct_c_trigger"></pre>
+</span>
+{literal}<script type="text/javascript">
+Calendar.setup ({
+inputField : "next_pill_ct_c",
+ifFormat : "%m/%d/%Y %I:%M%P",
+daFormat : "%m/%d/%Y %I:%M%P",
+button : "next_pill_ct_c_trigger",
+singleClick : true,
+dateStr : "",
+startWeekday: 0,
+step : 1,
+weekNumbers:false
+}
+);
+</script>{/literal}
 </td>
+
 <td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
 &nbsp;Last NCM contact <br>
 <span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-<input class="date_input" tabindex="48" autocomplete="off" type="text" name="last_nurse_phone_contact_c" id="last_nurse_phone_contact_c" value="{$datarow.last_nurse_phone_contact_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.last_nurse_phone_contact_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_nurse_phone_contact_c_trigger"></pre>
+<input class="date_input" tabindex="48" autocomplete="off" type="text" name="last_nurse_phone_contact_c" id="last_nurse_phone_contact_c" value="{$datarow.last_nurse_phone_contact_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_nurse_phone_contact_c_trigger"></pre>
 </span>
 {literal}
 <script type="text/javascript">
