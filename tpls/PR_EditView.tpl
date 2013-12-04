@@ -35,7 +35,19 @@
  ********************************************************************************/
 
 *}
-
+{literal}
+<style type="text/css">
+table.view { border-collapse:collapse; }
+table.view td, table.view th { font-size:80%; } 
+table.list th div {
+    font-size: 10px;
+}
+table.view tr:nth-of-type(odd) {
+ 
+  background-color: #def;
+}
+</style>
+{/literal}
 
 <script>
     {literal}
@@ -300,9 +312,9 @@ a.style.display = "none";
 
 {php}
 
-session_start();
+//session_start();
 // store session data
-if (!empty($_POST['regnamesort'])) $_SESSION['regnamesort']=$_POST['regnamesort'];
+//if (!empty($_POST['regnamesort'])) $_SESSION['regnamesort']=$_POST['regnamesort'];
 {/php}
 
 <div class="clear"></div>
@@ -315,7 +327,7 @@ if (!empty($_POST['regnamesort'])) $_SESSION['regnamesort']=$_POST['regnamesort'
 <table style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
 <tr >
 {assign var=pro_summary value=":"|explode:$datarow.summary} 
-<td  width="66.6%" >Encounter Summary <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{$pro_summary[1]}" title=""  onblur="set_session(this.id,this.value);">
+<td  width="66.6%" >Encounter Summary <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{if ($encountype == "refill") } Refill {/if}" title=""  onblur="set_session(this.id,this.value);">
 </td>
 <td  style="width:33.3%;">
 Patient Present   <input  valign="bottom" accesskey=""  type="hidden" name="patient_present_c" value="0"><input tabindex="08"  type="checkbox" id="patient_present_c" name="patient_present_c" value="1" title="" >
@@ -324,6 +336,7 @@ Patient Present   <input  valign="bottom" accesskey=""  type="hidden" name="pati
 </tr>
 </table >
 <table >
+
 <tr>
 <td width:100% colspan="3" scope="col">Notes<br>
 <textarea autofocus  tabindex="12" name="history_c" id="history_c" rows="12" cols="100" maxlength="20000" >{if  ($notes_flag == "true")} {$datarow.history_c} {/if}</textarea>
@@ -524,7 +537,7 @@ weekNumbers:false
 <td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;""><br>
 &nbsp;Date of last UTS<br/>
 <span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-<input class="date_input" tabindex="28" autocomplete="off" type="text" name="last_uts_c"  id="last_uts_c" value="{$datarow.last_uts_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10"  >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_uts_c_trigger">&nbsp;&nbsp;</pre>
+<input class="date_input" tabindex="28" autocomplete="off" type="text" name="last_uts_c"  id="last_uts_c" value="{if $lastuts != ""} {$lastuts} {else} {$datarow.last_uts_c|date_format:'%m/%d/%Y'} {/if}" title=""  size="11" maxlength="10"  >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_uts_c_trigger">&nbsp;&nbsp;</pre>
 </span>
 {literal}
 <script type="text/javascript">
@@ -918,6 +931,53 @@ weekNumbers:false
 </td>
 </tr>
 </table>
+
+
+<!-- START OF UTS accordion-->
+{if $notes_flag == "false"}
+<div id='accordion1'>
+<h3 style='font-size:16px;font-weight:bold;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lab Results</h3><div>
+<table  width="40%" cellspacing="0" cellpadding="0" border="1" class="list view">
+  
+  <tbody>
+    <tr height = "20">
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  Urine Tox Date </div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  OXYCODONE </div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  OPIATE URINE </div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  METHADONE </div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  COCAINE</div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BUPRENORPHINE</div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BENZO</div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BARBITURATES</div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  AMPHETAMINES</div> </th>
+
+		
+    </tr>
+	
+	
+	
+	{foreach name=myrowIteration from=$mydatauts key=id item=myrowData}
+	 
+	     <tr class="oddListRowS1" height="20">
+		    <td class="" valign="top" align="left" scope="row"> {$myrowData.thisdate1} </td>
+            <td class="" valign="top" align="left"> {$myrowData.oxy}  </td>
+            <td class="" valign="top" align="left"> {$myrowData.opiate} </td>
+            <td class="" valign="top" align="left"> {$myrowData.methadone} </td>
+			<td class="" valign="top" align="left"> {$myrowData.cocaine} </td>
+			<td class="" valign="top" align="left"> {$myrowData.bupreno} </td>
+			<td class="" valign="top" align="left"> {$myrowData.benzo} </td>
+			<td class="" valign="top" align="left"> {$myrowData.barbi} </td>
+			<td class="" valign="top" align="left"> {$myrowData.amph} </td>
+         </tr>
+
+	{/foreach}
+
+  </tbody>
+
+</table></div>
+</div>
+{/if}
+<!--accordion -->
 
 <span id='tabcounterJS'><script>SUGAR.TabFields=new Array();//this will be used to track tabindexes for references</script></span>
 
