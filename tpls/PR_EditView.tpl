@@ -933,7 +933,7 @@ weekNumbers:false
 </table>
 
 
-<!-- START OF UTS accordion-->
+<!-- START OF UTS accordion--> <!-- changes 02/20 sort expanded UTS and UTS -->
 {if $notes_flag == "false"}
 <div id='accordion1'>
 <h3 style='font-size:16px;font-weight:bold;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lab Results</h3><div>
@@ -943,10 +943,10 @@ weekNumbers:false
     <tr height = "20">
 		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  Urine Tox Date </div> </th>
 		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  OXYCODONE </div> </th>
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  OPIATE URINE </div> </th>
 		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  METHADONE </div> </th>
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  COCAINE</div> </th>
 		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BUPRENORPHINE</div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  OPIATE URINE </div> </th>
+		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  COCAINE</div> </th>
 		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BENZO</div> </th>
 		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BARBITURATES</div> </th>
 		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  AMPHETAMINES</div> </th>
@@ -961,10 +961,10 @@ weekNumbers:false
 	     <tr class="oddListRowS1" height="20">
 		    <td class="" valign="top" align="left" scope="row"> {$myrowData.thisdate1} </td>
             <td class="" valign="top" align="left"> {$myrowData.oxy}  </td>
-            <td class="" valign="top" align="left"> {$myrowData.opiate} </td>
-            <td class="" valign="top" align="left"> {$myrowData.methadone} </td>
-			<td class="" valign="top" align="left"> {$myrowData.cocaine} </td>
+			<td class="" valign="top" align="left"> {$myrowData.methadone} </td>
 			<td class="" valign="top" align="left"> {$myrowData.bupreno} </td>
+            <td class="" valign="top" align="left"> {$myrowData.opiate} </td>
+			<td class="" valign="top" align="left"> {$myrowData.cocaine} </td>
 			<td class="" valign="top" align="left"> {$myrowData.benzo} </td>
 			<td class="" valign="top" align="left"> {$myrowData.barbi} </td>
 			<td class="" valign="top" align="left"> {$myrowData.amph} </td>
