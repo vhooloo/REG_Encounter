@@ -1,5 +1,5 @@
 <?php
-// created: 2013-11-17 18:35:33
+// created: 2013-05-14 18:26:24
 $searchFields['REG_Encounter'] = array (
   'document_name' => 
   array (

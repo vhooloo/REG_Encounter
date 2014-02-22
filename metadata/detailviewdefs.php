@@ -68,6 +68,15 @@ array (
         array (
           0 => 'description',
         ),
+        3 => 
+        array (
+          0 => 
+          array (
+            'name' => 'patient_present_c',
+            'label' => 'LBL_PATIENT_PRESENT',
+          ),
+          1 => '',
+        ),
       ),
     ),
   ),
