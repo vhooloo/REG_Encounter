@@ -39,7 +39,19 @@ $dictionary["REG_Encounter"]["fields"]["reg_patient_reg_encounterreg_patient_ida
 );
 
 
+ // created: 2014-02-25 12:10:57
+
+ 
+
  // created: 2013-11-27 10:21:56
+
+ 
+
+ // created: 2014-02-25 12:23:42
+
+ 
+
+ // created: 2014-02-25 11:25:39
 
  
 
