@@ -1,5 +1,5 @@
 <?php
-// created: 2013-11-27 10:22:44
+// created: 2014-02-25 12:23:42
 $mod_strings = array (
   'LBL_PATIENT_PRESENT' => 'Patient Present',
   'LBL_LAST_RX_WHOM' => 'Last Rx  by Whom?',
@@ -14,4 +14,7 @@ $mod_strings = array (
   'LBL_RISKLVL' => 'LBL_RISKLVL',
   'LBL_LONGACTING' => 'Multiple Long Acting Opioids',
   'LBL_SHORTACTING' => 'Multiple Short Acting Opioids',
+  'LBL_ABHERRENT_BEHAVIORS_C' => 'Abherrent Behaviors',
+  'LBL_NXT_PILL_CT_C' => 'Abherrent Behaviors',
+  'LBL_NEXT_PILL_CT' => 'next pill ct',
 );
