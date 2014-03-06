@@ -1381,7 +1381,7 @@ $('img.remove').live('click', function(){
     $(this).closest('li').remove();
 
     var combine = document.getElementById('next_appt_other_c').value
-
+	
 	var values_of = combine.split('#');
 
 	var final_value='';
