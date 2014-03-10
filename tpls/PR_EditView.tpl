@@ -464,7 +464,8 @@ var daysdispensed="";
 
 	//appendTxt=appendTxt +"Aberrant behavior noted: ";	
 
-	if( document.getElementById('aberrant_behavior_noted_c').checked)
+	//if( document.getElementById('aberrant_behavior_noted_c').checked)
+	if( document.getElementById('abherrent_behaviors_c').selected)
 
 	{
 
@@ -653,7 +654,6 @@ a.style.display = "none";
 <table style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
 
 <tr >
-
 {assign var=pro_summary value=":"|explode:$datarow.summary} 
 
 <td  width="66.6%" >Encounter Summary <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{if ($encountype == "refill") } Refill {/if}" title=""  onblur="set_session(this.id,this.value);">
@@ -740,8 +740,6 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 
 <tr><td>
 
-<br>
-
 <input type="hidden" name="med_safety_pulm_prob_cx" value="0">
 
 
@@ -749,30 +747,16 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 <input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  > 0   )}  checked="checked" {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD)
 
 </td><td  style="width:33.3%;">
+ 
+<select name='risklvl_c'  id='risklvl_c' disabled>
 
-<select name='risklvl_c'  id='risklvl_c' >
+<option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
 
-<option label="NA" value="-1" {if ( ($datarow.risklvl_c  < 0)  OR ($datarow.risklvl_c) =="" )} selected="selected" {/if} >NA</option>
+<option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
 
-<option label="LOW" value="0" {if ( ($datarow.risklvl_c != "") AND $datarow.risklvl_c  >= 0 AND  $datarow.risklvl_c  < 4  )} selected="selected" {/if} >LOW</option>
+<option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
 
-<!--option label="1-LOW" value="1">1-LOW</option>
-
-<option label="2-LOW" value="2">2-LOW</option>
-
-<option label="3-LOW" value="3">3-LOW</option>
-
-<option label="4-MEDIUM" value="4">4-MEDIUM</option-->
-
-<option label="MODERATE" value="5" {if ( $datarow.risklvl_c  >= 4 AND  $datarow.risklvl_c  < 7  )} selected="selected" {/if} >MODERATE</option>
-
-<!--option label="6-MEDIUM" value="6">6-MEDIUM</option>
-
-<option label="7-HIGH" value="7">7-HIGH</option>
-
-<option label="8-HIGH" value="8">8-HIGH</option-->
-
-<option label="HIGH" value="9" {if ( $datarow.risklvl_c  >= 7   )} selected="selected" {/if} >HIGH</option-->
+<option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option-->
 
 </select>
 
@@ -1712,7 +1696,7 @@ Aberrant Behavior Noted:
 <option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - reports from family, intoxication, disruptive behaviors</option>
 </optgroup>
 
-</select>
+</select><br>
 <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
 
 <!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted-->
@@ -1950,9 +1934,6 @@ weekNumbers:false
 	
 
 	
-
-	
-
 	{foreach name=myrowIteration from=$mydatauts key=id item=myrowData}
 
 	 

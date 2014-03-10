@@ -39,16 +39,13 @@ $dictionary["REG_Encounter"]["fields"]["reg_patient_reg_encounterreg_patient_ida
 );
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
  // created: 2013-09-17 10:54:46
 
  
 
  // created: 2013-09-17 10:54:47
-=======
-=======
->>>>>>> fd18c9b1e593cbc05b54da7c7a26ebb28e4f403d
+
  // created: 2014-02-25 12:10:57
 
  
@@ -66,7 +63,7 @@ $dictionary["REG_Encounter"]["fields"]["reg_patient_reg_encounterreg_patient_ida
  
 
  // created: 2013-10-12 05:55:35
->>>>>>> fd18c9b1e593cbc05b54da7c7a26ebb28e4f403d
+
 
  
 
