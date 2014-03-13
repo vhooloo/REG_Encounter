@@ -729,7 +729,7 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 
 
 
-
+{if $smarty.request.action=='aaa'}
 <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
 
 <tr ><td ><h3>Risk Monitoring</h3></td><td><h3>Risk Level</h3></td></tr>
@@ -815,7 +815,112 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 </tr>
 
 </table >
+{/if}
+<table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
 
+<tr><td>
+Aberrant Behavior Noted:
+<br>
+<select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" class="ui-selectmenu-menu" multiple="multiple" style="height:140px">
+<optgroup>
+<optgroup label="Monitoring Non-adherence">
+<option value="RefusePillCount" id="RefusePillCount">Refuse pill count</option>
+<option value="RefuseUDT" id="RefuseUDT">Refuse UDT</option> 
+</optgroup>
+
+<optgroup>
+<optgroup label="Monitoring Concerning behavior">
+<option value="IncorrectPillCount" id="IncorrectPillCount">Incorrect pill count</option> 
+<option value="UnexpectedUDTResult" id="UnexpectedUDTResult">Unexpected UDT result</option> 
+</optgroup>
+
+<optgroup>
+<optgroup label="Med management Concerning behavior">
+<option value="UnsanctionedDoseEscalation" id="UnsanctionedDoseEscalation">Unsanctioned dose escalation</option> 
+</optgroup>
+
+<optgroup>
+<optgroup label="Concerning behavior">
+<option value="ConcerningBehaviorPMP" id="ConcerningBehaviorPMP">PMP</option> 
+<option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - reports from family, intoxication, disruptive behaviors</option>
+</optgroup>
+
+</select></td>
+<td style="width:50%;"><strong>Risk Level <select name='risklvl_c'  id='risklvl_c' disabled>
+
+<option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
+
+<option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
+
+<option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
+
+<option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option-->
+
+</select></strong><br>
+<input type="hidden" name="aberrant_behavior_noted_cx" value="0">
+
+<!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted-->
+
+<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
+
+<input type="hidden" name="pt_confirms_taking_cx" value="0">
+
+<input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed<br>
+
+<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
+
+<input type="hidden" name="pt_confirms_storing_cx" value="0"><input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely<br>
+<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
+<input type="hidden" name="narcotic_contract_in_chart_cx" value="0"><input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  > 0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><br><span class="dateTime"> <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
+
+<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger">
+
+</span>
+
+{literal}
+
+<script type="text/javascript">
+
+Calendar.setup ({
+
+inputField : "narcotic_contract_sign_c",
+
+ifFormat : "%m/%d/%Y %I:%M%P",
+
+daFormat : "%m/%d/%Y %I:%M%P",
+
+button : "narcotic_contract_sign_c_trigger",
+
+singleClick : true,
+
+dateStr : "",
+
+startWeekday: 0,
+
+step : 1,
+
+weekNumbers:false
+
+}
+
+);
+
+</script>
+
+{/literal}
+
+</td></tr>
+
+
+
+<tr><td>
+
+
+</td></tr>
+
+
+
+</table>
 
 
 <br>
@@ -837,13 +942,13 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 
 <td style="width:50%;border-color: rgb( 100, 100, 255); border-style: solid none solid solid;border-width: 2px; margin-top: 0;vertical-align: top;">
 
-<table style="width:100%;border-collapse:collapse;">
+<table style="width:350px;border-collapse:collapse;">
 
 
 
 <tr>
 
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none none solid none;border-width: 2px;margin-top: 0;vertical-align: top;text-align:center" colspan='3'>
+<td style="border-color: rgb( 100, 100, 255); border-style: none none solid none;border-width: 2px;margin-top: 0;vertical-align: top;text-align:center" colspan='2'>
 
 <h3 style="margin-top: 5px;">Clinical Data</h3>
 
@@ -853,8 +958,8 @@ Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" 
 
 <tr>
 
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;" >
-
+<td style="width:50%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;" >
+<br>
 &nbsp;Next Rx Refill <br> 
 
 <span class="dateTime">
@@ -956,15 +1061,16 @@ weekNumbers:false
 
 
 </td>
- 
 
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;margin-left: 5px;vertical-align: top;">
+<td style="width:50%;vertical-align: top;">
 
-&nbsp;Last PCP visit
+<br/>&nbsp;Next NCM Visit<br/>
 
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
+<span class="dateTime">
 
-<input class="date_input" tabindex="36" autocomplete="off" type="text" name="last_pcp_visit_c" id="last_pcp_visit_c" value="{$datarow.last_pcp_visit_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pcp_visit_c_trigger"> </pre>
+<input class="date_input" tabindex="48" autocomplete="off" type="text" name="nxt_appt_pain_c" id="nxt_appt_pain_c" onchange='check_date(this);' value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.nxt_appt_pain_c)  > 0   )} style="color:red" {/if}>
+
+<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="nxt_appt_pain_c_trigger">
 
 </span>
 
@@ -974,13 +1080,13 @@ weekNumbers:false
 
 Calendar.setup ({
 
-inputField : "last_pcp_visit_c",
+inputField : "nxt_appt_pain_c",
 
 ifFormat : "%m/%d/%Y %I:%M%P",
 
 daFormat : "%m/%d/%Y %I:%M%P",
 
-button : "last_pcp_visit_c_trigger",
+button : "nxt_appt_pain_c_trigger",
 
 singleClick : true,
 
@@ -999,74 +1105,56 @@ weekNumbers:false
 </script>
 
 {/literal}
-
-</td>
-
-<td>
-
-&nbsp;Last PMP Review
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" tabindex="52" autocomplete="off" type="text" name="last_pmp_review_done_c" id="last_pmp_review_done_c" value="{$datarow.last_pmp_review_done_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10"  >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pmp_review_done_c_trigger"> </pre>
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "last_pmp_review_done_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "last_pmp_review_done_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>
-
-{/literal}
-
-
-
-
-
-
-
-
-
-
 
 </td>
 
 </tr>
 
 <tr>
+<td style="border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"><br/>
+&nbsp;Next UTS due <br>
+<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
 
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;""><br>
+<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_uts_due_c" id="next_uts_due_c" value="{$datarow.next_uts_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_uts_due_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_uts_due_c_trigger"></pre>
 
-&nbsp;Date of last UTS<br/>
+</span>
+
+{literal}<script type="text/javascript">
+
+Calendar.setup ({
+
+inputField : "next_uts_due_c",
+
+ifFormat : "%m/%d/%Y %I:%M%P",
+
+daFormat : "%m/%d/%Y %I:%M%P",
+
+button : "next_uts_due_c_trigger",
+
+singleClick : true,
+
+dateStr : "",
+
+startWeekday: 0,
+
+step : 1,
+
+weekNumbers:false
+
+}
+
+);
+
+</script>{/literal}
+
+</td>
+<td ><br>
+
+&nbsp;Next PMP Review <br><a href='https://gateway.hhs.state.ma.us/authn/login.do' target='_blank' style='display: inline; text-align: right;'>Link to PMP</a><br>
 
 <span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
 
-<input class="date_input" tabindex="28" autocomplete="off" type="text" name="last_uts_c"  id="last_uts_c" value="{if $lastuts != ""} {$lastuts} {else} {$datarow.last_uts_c|date_format:'%m/%d/%Y'} {/if}" title=""  size="11" maxlength="10"  >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_uts_c_trigger">&nbsp;&nbsp;</pre>
+<input class="date_input" tabindex="56" autocomplete="off" type="text" name="next_pmp_review_due_c" id="next_pmp_review_due_c" onchange='check_date(this);' value="{$datarow.next_pmp_review_due_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pmp_review_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pmp_review_due_c_trigger" ></pre>
 
 </span>
 
@@ -1076,13 +1164,13 @@ weekNumbers:false
 
 Calendar.setup ({
 
-inputField : "last_uts_c",
+inputField : "next_pmp_review_due_c",
 
 ifFormat : "%m/%d/%Y %I:%M%P",
 
 daFormat : "%m/%d/%Y %I:%M%P",
 
-button : "last_uts_c_trigger",
+button : "next_pmp_review_due_c_trigger",
 
 singleClick : true,
 
@@ -1102,11 +1190,50 @@ weekNumbers:false
 
 {/literal}
 
-
-
 </td>
+</tr>
 
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"><br/>
+<tr>
+<td style="border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
+
+&nbsp;Next Pill Count <br>
+
+<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
+
+<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_pill_ct_c" id="next_pill_ct_c" value="{$datarow.next_pill_ct_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pill_ct_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pill_ct_c_trigger"></pre>
+
+</span>
+
+{literal}<script type="text/javascript">
+
+Calendar.setup ({
+
+inputField : "next_pill_ct_c",
+
+ifFormat : "%m/%d/%Y %I:%M%P",
+
+daFormat : "%m/%d/%Y %I:%M%P",
+
+button : "next_pill_ct_c_trigger",
+
+singleClick : true,
+
+dateStr : "",
+
+startWeekday: 0,
+
+step : 1,
+
+weekNumbers:false
+
+}
+
+);
+
+</script>{/literal}
+
+{if $smarty.request.action=='PatientEncounter'}
+<br/>
 
 &nbsp;Next PCP visit <br>
 
@@ -1147,146 +1274,8 @@ weekNumbers:false
 </script>
 
 {/literal}
-
+{/if}
 </td>
-
-
-
-<td ><br>
-
-&nbsp;Next PMP Review <a href='https://gateway.hhs.state.ma.us/authn/login.do' target='_blank' style='display: inline; text-align: right;'>Link to PMP</a><br>
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" tabindex="56" autocomplete="off" type="text" name="next_pmp_review_due_c" id="next_pmp_review_due_c" onchange='check_date(this);' value="{$datarow.next_pmp_review_due_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pmp_review_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pmp_review_due_c_trigger" ></pre>
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "next_pmp_review_due_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "next_pmp_review_due_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>
-
-{/literal}
-
-
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"><br/>
-&nbsp;Next UTS due <br>
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_uts_due_c" id="next_uts_due_c" value="{$datarow.next_uts_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_uts_due_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_uts_due_c_trigger"></pre>
-
-</span>
-
-{literal}<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "next_uts_due_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "next_uts_due_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>{/literal}
-
-
-
-</td>
-
-
-
-
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"><br/>
-
-&nbsp;Last NCM Visit<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" tabindex="44" autocomplete="off" type="text" name="last_pain_nurse_visit_c" id="last_pain_nurse_visit_c"  value="{$datarow.last_pain_nurse_visit_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="last_pain_nurse_visit_c_trigger"> </pre></span>
-
-{literal}
-
-<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "last_pain_nurse_visit_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "last_pain_nurse_visit_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>
-
-{/literal}
-
-</td>
-
-
 
 <td>
 
@@ -1474,113 +1463,15 @@ document.getElementById('pretty_date').value="";
 
 {/literal}
 
-
-
-
-
-
-
-
-
-
-
 </td>
 
 </tr>
 
 <tr>
 
-<!-- added pill count -->
-
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
-
-&nbsp;Next Pill Count <br>
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_pill_ct_c" id="next_pill_ct_c" value="{$datarow.next_pill_ct_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pill_ct_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pill_ct_c_trigger"></pre>
-
-</span>
-
-{literal}<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "next_pill_ct_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "next_pill_ct_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>{/literal}
-
-</td>
-
-
-
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
-
-&nbsp;Last NCM contact <br>
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" tabindex="48" autocomplete="off" type="text" name="last_nurse_phone_contact_c" id="last_nurse_phone_contact_c" value="{$datarow.last_nurse_phone_contact_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative;  top:6px" border="0" id="last_nurse_phone_contact_c_trigger"></pre>
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "last_nurse_phone_contact_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "last_nurse_phone_contact_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>
-
-{/literal}
-
-</td>
-
 <td rowspan='2'>
 
-<div style="overflow: auto; overflow-y: scroll;max-width:300px;max-height:130px;">
+<div style="overflow: auto; ">
 
 &nbsp;<ul id="entry_list" style="margin-left:0px;padding-left:1px;"></ul>
 
@@ -1590,70 +1481,12 @@ weekNumbers:false
 
 </td>
 
-
-
-</tr>
-
-<tr>
-
-
-
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"></td>
-
-
-
-<td style="width:33.3%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
-
-<br/>&nbsp;Next NCM Visit<br/>
-
-<span class="dateTime">
-
-<input class="date_input" tabindex="48" autocomplete="off" type="text" name="nxt_appt_pain_c" id="nxt_appt_pain_c" onchange='check_date(this);' value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.nxt_appt_pain_c)  > 0   )} style="color:red" {/if}>
-
-<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="nxt_appt_pain_c_trigger">
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "nxt_appt_pain_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "nxt_appt_pain_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>
-
-{/literal}
-
-</td>
-
 </tr>
 
 
 
 </table>
-
+{if $smarty.request.action=='aaa'}
 <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
 
 <tr>
@@ -1667,7 +1500,7 @@ weekNumbers:false
 <tr><td>
 Aberrant Behavior Noted:
 <br>
-<select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" class="ui-selectmenu-menu" multiple="multiple">
+<select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" class="ui-selectmenu-menu" multiple="multiple" style="height:140px">
 
 <optgroup>
 <optgroup label="Monitoring Non-adherence">
@@ -1772,7 +1605,7 @@ weekNumbers:false
 
 
 </table>
-
+{/if}
 
 
 
