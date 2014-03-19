@@ -73,8 +73,7 @@
 *}
 
 {literal}
-
-<style type="text/css">
+ <style type="text/css">
 
 table.view { border-collapse:collapse; }
 
@@ -95,11 +94,7 @@ table.view tr:nth-of-type(odd) {
 }
 
 </style>
-
-{/literal}
-
-
-
+{/literal} 
 <script>
 
     {literal}
@@ -230,7 +225,7 @@ var daysdispensed="";
 
 
 
-	var lastUTS = document.getElementById('last_uts_c').value;
+	/*var lastUTS = document.getElementById('last_uts_c').value;
 
 	if(lastUTS==""){
 
@@ -238,7 +233,7 @@ var daysdispensed="";
 
 	} else
 
-	appendTxt =appendTxt + "Date of last UTS: " +lastUTS+"\r\n";
+	appendTxt =appendTxt + "Date of last UTS: " +lastUTS+"\r\n";*/
 
 
 
@@ -254,7 +249,7 @@ var daysdispensed="";
 
 
 
-	var lastPCP = document.getElementById('last_pcp_visit_c').value;
+	/*var lastPCP = document.getElementById('last_pcp_visit_c').value;
 
 	if(lastPCP==""){
 
@@ -262,10 +257,10 @@ var daysdispensed="";
 
 	} else
 
-	appendTxt =appendTxt + "Last PCP visit: " +lastPCP+"\r\n";
-
-	
-
+	appendTxt =appendTxt + "Last PCP visit: " +lastPCP+"\r\n";*/
+{/literal}
+	{if $smarty.request.action eq "PatientEncounter"}
+{literal}	
 	var nextPCP = document.getElementById('next_pcp_visit_c').value;
 
 	if(nextPCP==""){
@@ -273,12 +268,11 @@ var daysdispensed="";
 	nextPCP= "Information Not Available"
 
 	} else
-
 	appendTxt =appendTxt + "Next PCP visit: " +nextPCP+"\r\n";
-
-
-
-	var lastNCMVisit = document.getElementById('last_pain_nurse_visit_c').value;
+{/literal}	
+{/if}
+{literal}
+	/*var lastNCMVisit = document.getElementById('last_pain_nurse_visit_c').value;
 
 	if(lastNCMVisit==""){
 
@@ -286,11 +280,11 @@ var daysdispensed="";
 
 	} else
 
-	appendTxt =appendTxt + "Last NCM Visit: " +lastNCMVisit+"\r\n";
+	appendTxt =appendTxt + "Last NCM Visit: " +lastNCMVisit+"\r\n";*/
 
 	
 
-	var lastNCMContact = document.getElementById('last_nurse_phone_contact_c').value;
+	/*var lastNCMContact = document.getElementById('last_nurse_phone_contact_c').value;
 
 	if(lastNCMContact==""){
 
@@ -298,7 +292,7 @@ var daysdispensed="";
 
 	} else
 
-	appendTxt =appendTxt + "Last NCM Contact: " +lastNCMContact+"\r\n";
+	appendTxt =appendTxt + "Last NCM Contact: " +lastNCMContact+"\r\n";*/
 
 
 
@@ -314,7 +308,7 @@ var daysdispensed="";
 
 	
 
-	var lastPMP = document.getElementById('last_pmp_review_done_c').value;
+	/*var lastPMP = document.getElementById('last_pmp_review_done_c').value;
 
 	if(lastPMP==""){
 
@@ -322,7 +316,7 @@ var daysdispensed="";
 
 	} else
 
-	appendTxt =appendTxt + "Last PMP review: " +lastPMP+"\r\n";
+	appendTxt =appendTxt + "Last PMP review: " +lastPMP+"\r\n";*/
 
 	
 
@@ -376,7 +370,7 @@ var daysdispensed="";
 
 	 
 
-	if( document.getElementById('med_safety_pulm_prob_c').checked)
+	/*if( document.getElementById('med_safety_pulm_prob_c').checked)
 
 	{
 
@@ -388,11 +382,11 @@ var daysdispensed="";
 
 	 //appendTxt=appendTxt +"NO"+"\r\n";		
 
-	}
+	}*/
 
 	 	
 
-	if( document.getElementById('med_safety_sedatives_c').checked)
+	/*if( document.getElementById('med_safety_sedatives_c').checked)
 
 	{
 
@@ -404,7 +398,7 @@ var daysdispensed="";
 
 	 //appendTxt=appendTxt +"NO"+"\r\n";		
 
-	}
+	}*/
 
 	
 
@@ -412,7 +406,7 @@ var daysdispensed="";
 
 	
 
-	if( document.getElementById('med_safety_high_medd_c').checked)
+	/*if( document.getElementById('med_safety_high_medd_c').checked)
 
 	{
 
@@ -424,7 +418,7 @@ var daysdispensed="";
 
 	 //appendTxt=appendTxt +"NO"+"\r\n";		
 
-	}
+	}*/
 
 
 
@@ -549,10 +543,7 @@ var daysdispensed="";
 
    
 
-</script>
-
-
-
+</script> 
 <script>
 
 window.onload = function()
@@ -589,10 +580,7 @@ window.onload = function()
 
 
 
-</script>
-
-
-
+</script> 
 <script type="text/javascript">
 
 var a = document.getElementById( "shortcuts" );
@@ -615,11 +603,8 @@ a = document.getElementById( "search" );
 
 a.style.display = "none";
 
-</script>
-
-
-
- {/literal}	
+</script> 
+{/literal}	
 
 
 
@@ -634,252 +619,146 @@ a.style.display = "none";
 //if (!empty($_POST['regnamesort'])) $_SESSION['regnamesort']=$_POST['regnamesort'];
 
 {/php}
-
-
-
 <div class="clear"></div>
-
 <form action="index.php" method="POST" name="{$form_name}" id="{$form_id}" {$enctype}>
-
-<table style="border-color: rgb( 100, 100, 255); border-style: solid none none none ; border-collapse:collapse; margin-top: 0;vertical-align: top;" width="100%" cellpadding="0" cellspacing="0" border="0" class="edit view panelContainer">
-
-
-
-<tr >
-
-
-
-<td style="width:50%;border-color: rgb( 100, 100, 255); border-style: solid solid solid none; border-width: 2px; margin-top: 0;vertical-align: top;" colspan="3" >
-
-<table style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
-
-<tr >
-{assign var=pro_summary value=":"|explode:$datarow.summary} 
-
-<td  width="66.6%" >Encounter Summary <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{if ($encountype == "refill") } Refill {/if}" title=""  onblur="set_session(this.id,this.value);">
-
-</td>
-
-<td  style="width:33.3%;">
-
-Patient Present   <input  valign="bottom" accesskey=""  type="hidden" name="patient_present_c" value="0"><input tabindex="08"  type="checkbox" id="patient_present_c" name="patient_present_c" value="1" title="" >
-
-</td>
-
-
-
-</tr>
-
-</table >
-
-<table >
-
-
-
-<tr>
-
-<td width:100% colspan="3" scope="col">Notes<br>
-
-<textarea autofocus  tabindex="12" name="history_c" id="history_c" rows="12" cols="100" maxlength="20000" >{if  ($notes_flag == "true")} {$datarow.history_c} {/if}</textarea>
-
-</td>
-
-</tr>
-
-<!-- only for refill -->
-
-{if ($encountype == "refill") }
-
-<tr>
-
-<td style="width:33.3%;" ><br/>
-
-Days Dispensed <input type="text" tabindex="16"  name="pills_bottle_disp_c" id="pills_bottle_disp_c" size="4" maxlength="4" value="{$datarow.pills_bottle_disp_c}" title="">
-
-</td>
-
-<td style="width:33.3%;" ><br/>
-
-Prescription Refilled Early <input  valign="bottom" accesskey=""  type="hidden" name="presc_refill_early_c" value="0"><input tabindex="16"  type="checkbox" id="presc_refill_early_c" name="presc_refill_early_c" value="1" title=""  >
-
-</td>
-
-</tr>
-
-{/if}
-
-<!-- only for refill -->
-
-<!-- only for encounter -->
-
-{if ($encountype == "encounter") }
-
-<tr>
-
-<td style="width:33.3%;" ><br/>
-
-<input type="checkbox" tabindex="80" id=" 	pt_ben_opioid_c" name="pt_ben_opioid_c" value="1" title=""   {if ( $datarow.pt_ben_opioid_c  > 0   )}  checked="checked" {/if} >&nbsp; Patient Benefits from Opioids 
-
-</td></tr>
-
-{/if}
-
-</table >
-
-
-
-
-{if $smarty.request.action=='aaa'}
-<table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
-
-<tr ><td ><h3>Risk Monitoring</h3></td><td><h3>Risk Level</h3></td></tr>
-
-
-
-<tr>
-
-<tr><td>
-
-<input type="hidden" name="med_safety_pulm_prob_cx" value="0">
-
-
-
-<input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  > 0   )}  checked="checked" {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD)
-
-</td><td  style="width:33.3%;">
- 
-<select name='risklvl_c'  id='risklvl_c' disabled>
-
-<option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
-
-<option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
-
-<option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
-
-<option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option-->
-
-</select>
-
-</td></tr>
-
-
-
-<tr><td>
-
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-
-<input type="hidden" name="med_safety_sedatives_cx" value="0">
-
-<input type="checkbox" tabindex="84" id="med_safety_sedatives_c" name="med_safety_sedatives_c" value="1" title=""   {if ( $datarow.med_safety_sedatives_c  > 0   )} checked="checked" {/if}  > &nbsp;Taking Sedative Meds
-
-</td>
-
-<td>
-
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-
-<input type="checkbox" tabindex="84" id="shortacting_c" name="shortacting_c" value="1" title=""   {if ( $datarow.shortacting_c  > 0   )} checked="checked" {/if}  > &nbsp;Multiple Short Acting Opioids
-
-</td>
-
-
-
-</tr>
-
-
-
-<tr><td>
-
-<img src= "" height="1" width ="1" alt="" vspace="4"/><br/>
-
-<input type="hidden" name="med_safety_high_medd_cx" value="0">
-
-<input type="checkbox" tabindex="88" id="med_safety_high_medd_c" name="med_safety_high_medd_c"  value="1" title=""    {if ( $datarow.med_safety_high_medd_c  > 0   )} checked="checked" {/if}  > &nbsp;(>50) MEDD
-
-</td>
-
-<td>
-
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-
-<input type="checkbox" tabindex="84" id="longacting_c" name="longacting_c" value="1" title=""   {if ( $datarow.longacting_c  > 0   )} checked="checked" {/if}  > &nbsp;Multiple Long Acting Opioids
-
-</td>
-
-
-
-</tr>
-
-
-
-</tr>
-
-</table >
-{/if}
-<table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
-
-<tr><td>
-Aberrant Behavior Noted:
-<br>
-<select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" class="ui-selectmenu-menu" multiple="multiple" style="height:140px">
-<optgroup>
-<optgroup label="Monitoring Non-adherence">
-<option value="RefusePillCount" id="RefusePillCount">Refuse pill count</option>
-<option value="RefuseUDT" id="RefuseUDT">Refuse UDT</option> 
-</optgroup>
-
-<optgroup>
-<optgroup label="Monitoring Concerning behavior">
-<option value="IncorrectPillCount" id="IncorrectPillCount">Incorrect pill count</option> 
-<option value="UnexpectedUDTResult" id="UnexpectedUDTResult">Unexpected UDT result</option> 
-</optgroup>
-
-<optgroup>
-<optgroup label="Med management Concerning behavior">
-<option value="UnsanctionedDoseEscalation" id="UnsanctionedDoseEscalation">Unsanctioned dose escalation</option> 
-</optgroup>
-
-<optgroup>
-<optgroup label="Concerning behavior">
-<option value="ConcerningBehaviorPMP" id="ConcerningBehaviorPMP">PMP</option> 
-<option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - reports from family, intoxication, disruptive behaviors</option>
-</optgroup>
-
-</select></td>
-<td style="width:50%;"><strong>Risk Level <select name='risklvl_c'  id='risklvl_c' disabled>
-
-<option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
-
-<option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
-
-<option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
-
-<option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option-->
-
-</select></strong><br>
-<input type="hidden" name="aberrant_behavior_noted_cx" value="0">
-
-<!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted-->
-
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-
-<input type="hidden" name="pt_confirms_taking_cx" value="0">
-
-<input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed<br>
-
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-
-<input type="hidden" name="pt_confirms_storing_cx" value="0"><input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely<br>
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-<input type="hidden" name="narcotic_contract_in_chart_cx" value="0"><input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  > 0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><br><span class="dateTime"> <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
-
-<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger">
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
+ <table style="border-color: rgb( 100, 100, 255); border-style: solid none none none ; border-collapse:collapse; margin-top: 0;vertical-align: top;" width="100%" cellpadding="0" cellspacing="0" border="0" class="edit view panelContainer">
+   <tr >
+  
+  <td style="width:80%;border-color: rgb( 100, 100, 255); border-style: solid solid solid none; border-width: 2px; margin-top: 0;vertical-align: top;" colspan="3" >
+  <table width="100%" style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
+    <tr > {assign var=pro_summary value=":"|explode:$datarow.summary}
+     <td  width="66.6%" >Encounter Summary
+      <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{if ($encountype == "refill") } Refill {/if}" title=""  onblur="set_session(this.id,this.value);"></td>
+     <td  style="width:33.3%;"> Patient Present
+      <input  valign="bottom" accesskey=""  type="hidden" name="patient_present_c" value="0">
+      <input tabindex="08"  type="checkbox" id="patient_present_c" name="patient_present_c" value="1" title="" ></td>
+    </tr>
+   </table >
+   <table width="100%" >
+    <tr>
+     <td colspan="2" scope="col">Notes<br>
+      <textarea tabindex="12" name="history_c" id="history_c" rows="8" style="width:95%"  maxlength="20000" >{if  ($notes_flag == "true")} {$datarow.history_c} {/if}</textarea></td>
+    </tr>
+    
+    <!-- only for refill --> 
+    
+    {if ($encountype == "refill") }
+    <tr>
+     <td style="width:50%;" ><br/>
+      Days Dispensed
+      <input type="text" tabindex="16"  name="pills_bottle_disp_c" id="pills_bottle_disp_c" size="4" maxlength="4" value="{$datarow.pills_bottle_disp_c}" title=""></td>
+     <td style="width:50%;" ><br/>
+      Prescription Refilled Early
+      <input  valign="bottom" accesskey=""  type="hidden" name="presc_refill_early_c" value="0">
+      <input tabindex="16"  type="checkbox" id="presc_refill_early_c" name="presc_refill_early_c" value="1" title=""  ></td>
+    </tr>
+    {/if} 
+    
+    <!-- only for refill --> 
+    
+    <!-- only for encounter --> 
+    
+    {if ($encountype == "encounter") }
+    <tr>
+     <td colspan="2" ><br/>
+      <input type="checkbox" tabindex="80" id=" 	pt_ben_opioid_c" name="pt_ben_opioid_c" value="1" title=""   {if ( $datarow.pt_ben_opioid_c  >
+      0   )}  checked="checked" {/if} >&nbsp; Patient Benefits from Opioids </td>
+    </tr>
+    {/if}
+   </table >
+   {if $smarty.request.action=='aaa'}
+   <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
+    <tr >
+     <td ><h3>Risk Monitoring</h3></td>
+     <td><h3>Risk Level</h3></td>
+    </tr>
+    <tr>
+    <tr>
+     <td><input type="hidden" name="med_safety_pulm_prob_cx" value="0">
+      <input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  >
+      0   )}  checked="checked" {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD) </td>
+     <td  style="width:100%;"><select name='risklvl_c'  id='risklvl_c' disabled>
+       <option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
+       <option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
+       <option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
+       <option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH
+       </option>
+      </select></td>
+    </tr>
+    <tr>
+     <td>&nbsp;<br/>
+      <input type="hidden" name="med_safety_sedatives_cx" value="0">
+      <input type="checkbox" tabindex="84" id="med_safety_sedatives_c" name="med_safety_sedatives_c" value="1" title=""   {if ( $datarow.med_safety_sedatives_c  >
+      0   )} checked="checked" {/if}  > &nbsp;Taking Sedative Meds </td>
+     <td>&nbsp;<br/>
+      <input type="checkbox" tabindex="84" id="shortacting_c" name="shortacting_c" value="1" title=""   {if ( $datarow.shortacting_c  >
+      0   )} checked="checked" {/if}  > &nbsp;Multiple Short Acting Opioids </td>
+    </tr>
+    <tr>
+     <td><img src= "" height="1" width ="1" alt="" vspace="4"/><br/>
+      <input type="hidden" name="med_safety_high_medd_cx" value="0">
+      <input type="checkbox" tabindex="88" id="med_safety_high_medd_c" name="med_safety_high_medd_c"  value="1" title=""    {if ( $datarow.med_safety_high_medd_c  >
+      0   )} checked="checked" {/if}  > &nbsp;(>50) MEDD </td>
+     <td>&nbsp;<br/>
+      <input type="checkbox" tabindex="84" id="longacting_c" name="longacting_c" value="1" title=""   {if ( $datarow.longacting_c  >
+      0   )} checked="checked" {/if}  > &nbsp;Multiple Long Acting Opioids </td>
+    </tr>
+     </tr>
+    
+   </table >
+   {/if}
+   <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
+    <tr>
+     <td width="50%"> Aberrant Behavior Noted: <br>
+      <select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" multiple="multiple" style="height:190px; width:340px !important">
+       <optgroup>
+       <optgroup label="Monitoring Non-adherence">
+       <option value="RefusePillCount" id="RefusePillCount">Refuse pill count</option>
+       <option value="RefuseUDT" id="RefuseUDT">Refuse UDT</option>
+       </optgroup>
+       <optgroup>
+       <optgroup label="Monitoring Concerning behavior">
+       <option value="IncorrectPillCount" id="IncorrectPillCount">Incorrect pill count</option>
+       <option value="UnexpectedUDTResult" id="UnexpectedUDTResult">Unexpected UDT result</option>
+       </optgroup>
+       <optgroup>
+       <optgroup label="Med management Concerning behavior">
+       <option value="UnsanctionedDoseEscalation" id="UnsanctionedDoseEscalation">Unsanctioned dose escalation</option>
+       </optgroup>
+       <optgroup>
+       <optgroup label="Concerning behavior">
+       <option value="ConcerningBehaviorPMP" id="ConcerningBehaviorPMP">PMP</option>
+       <option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - family reports, intoxication, disruptive behavior</option>
+       </optgroup>
+      </select></td>
+     <td width="50%" style="padding-left:5px !important"><strong>Risk Level &nbsp;
+      <select name='risklvl_c'  id='risklvl_c' disabled>
+       <option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
+       <option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
+       <option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
+       <option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option>
+      </select>
+      </strong>&nbsp;&nbsp;<a class="button primary" style="text-decoration:none" href="index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}" target="_blank">View</a><br>
+      <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
+      
+      <!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted--> 
+      
+      &nbsp;<br/>
+      
+      <input type="hidden" name="pt_confirms_taking_cx" value="0">
+      <input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""  {if ( $datarow.pt_confirms_storing_c > 0)} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed<br>
+      &nbsp;<br/>
+      <input type="hidden" name="pt_confirms_storing_cx" value="0">
+      <input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  >
+      0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely<br>
+      &nbsp;<br/>
+      <input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
+      <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
+      0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><br>
+      <span class="dateTime">
+      <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
+      <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger"> </span> {literal} 
+      <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -905,68 +784,32 @@ weekNumbers:false
 
 );
 
-</script>
-
-{/literal}
-
-</td></tr>
-
-
-
-<tr><td>
-
-
-</td></tr>
-
-
-
-</table>
-
-
-<br>
-
-{{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}}
-
-
-{{sugar_action_menu buttons=$header_buttons class="fancymenu" flat=true}}
-
-<span id="copy_text_div">
-<input type="button" id="copy-button" onclick="copyToClipboard()" title="Copy information to Logician." value="Copy"></input>
-
-<textarea id="clipboard_textarea" style="display:none"></textarea>	
-
-</div>
-</td>
-
-
-
-<td style="width:50%;border-color: rgb( 100, 100, 255); border-style: solid none solid solid;border-width: 2px; margin-top: 0;vertical-align: top;">
-
-<table style="width:350px;border-collapse:collapse;">
-
-
-
-<tr>
-
-<td style="border-color: rgb( 100, 100, 255); border-style: none none solid none;border-width: 2px;margin-top: 0;vertical-align: top;text-align:center" colspan='2'>
-
-<h3 style="margin-top: 5px;">Clinical Data</h3>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="width:50%;border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;" >
-<br>
-&nbsp;Next Rx Refill <br> 
-
-<span class="dateTime">
-
-{literal}
-
-<script type="text/javascript">
+</script> 
+      {/literal} </td>
+    </tr>
+    <tr>
+     <td></td>
+    </tr>
+   </table>
+   <br>
+   {{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}}
+   
+   
+   {{sugar_action_menu buttons=$header_buttons class="fancymenu" flat=true}} <span id="copy_text_div">
+   <input type="button" id="copy-button" onclick="copyToClipboard()" title="Copy information to Logician." value="Copy">
+   </input>
+   <textarea id="clipboard_textarea" style="display:none"></textarea>
+   </div></td>
+  
+   <td style="width:20%;border-color: rgb( 100, 100, 255); border-style: solid none solid solid;border-width: 2px; margin-top: 0;vertical-align: top;"><table style="width:100%;border-collapse:collapse;">
+     <tr>
+      <td style="border-color: rgb( 100, 100, 255); border-style: none none solid none;border-width: 2px;margin-top: 0;vertical-align: top;text-align:center"><h3 style="margin-top: 5px;">Clinical Data</h3></td>
+     </tr>
+     <tr>
+      <td style="width:50%;margin-top: 0;vertical-align: top;" ><br>
+       &nbsp;Next Rx Refill <br>
+       <span class="dateTime"> {literal} 
+       <script type="text/javascript">
 
 function check_date(element){
 
@@ -1018,17 +861,11 @@ function check_date(element){
 
 }
 
-</script>
-
-{/literal}
-
-<pre style="margin-top:0; margin-bottom:0;"><input class="date_input" autocomplete="off" tabindex="24" type="text" name="next_rx_refill_due_c" onchange='check_date(this);' id="next_rx_refill_due_c" value="{$datarow.next_rx_refill_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_rx_refill_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_rx_refill_due_c_trigger"></pre>
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
+</script> 
+       {/literal}
+       <pre style="margin-top:0; margin-bottom:0;"><input class="date_input" autocomplete="off" tabindex="24" type="text" name="next_rx_refill_due_c" onchange='check_date(this);' id="next_rx_refill_due_c" value="{$datarow.next_rx_refill_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_rx_refill_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_rx_refill_due_c_trigger"></pre>
+       </span> {literal} 
+       <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1054,29 +891,16 @@ weekNumbers:false
 
 );
 
-</script>
-
-{/literal}
-
-
-
-</td>
-
-<td style="width:50%;vertical-align: top;">
-
-<br/>&nbsp;Next NCM Visit<br/>
-
-<span class="dateTime">
-
-<input class="date_input" tabindex="48" autocomplete="off" type="text" name="nxt_appt_pain_c" id="nxt_appt_pain_c" onchange='check_date(this);' value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.nxt_appt_pain_c)  > 0   )} style="color:red" {/if}>
-
-<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="nxt_appt_pain_c_trigger">
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
+</script> 
+       {/literal} </td>
+     </tr>
+     <tr>
+      <td style="width:50%;vertical-align: top;"><br/>
+       &nbsp;Next NCM Visit<br/>
+       <span class="dateTime">
+       <input class="date_input" tabindex="48" autocomplete="off" type="text" name="nxt_appt_pain_c" id="nxt_appt_pain_c" onchange='check_date(this);' value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.nxt_appt_pain_c)  >
+       0   )} style="color:red" {/if}> <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="nxt_appt_pain_c_trigger"> </span> {literal} 
+       <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1102,24 +926,17 @@ weekNumbers:false
 
 );
 
-</script>
-
-{/literal}
-
-</td>
-
-</tr>
-
-<tr>
-<td style="border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;"><br/>
-&nbsp;Next UTS due <br>
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
+</script> 
+       {/literal} </td>
+     </tr>
+     <tr>
+      <td style=";margin-top: 0;vertical-align: top;"><br/>
+       &nbsp;Next UTS due <br>
+       <span class="dateTime">
+       <pre style="margin-top:0; margin-bottom:0;">
 
 <input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_uts_due_c" id="next_uts_due_c" value="{$datarow.next_uts_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_uts_due_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_uts_due_c_trigger"></pre>
-
-</span>
-
-{literal}<script type="text/javascript">
+       </span> {literal}<script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1145,66 +962,16 @@ weekNumbers:false
 
 );
 
-</script>{/literal}
-
-</td>
-<td ><br>
-
-&nbsp;Next PMP Review <br><a href='https://gateway.hhs.state.ma.us/authn/login.do' target='_blank' style='display: inline; text-align: right;'>Link to PMP</a><br>
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" tabindex="56" autocomplete="off" type="text" name="next_pmp_review_due_c" id="next_pmp_review_due_c" onchange='check_date(this);' value="{$datarow.next_pmp_review_due_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pmp_review_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pmp_review_due_c_trigger" ></pre>
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "next_pmp_review_due_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "next_pmp_review_due_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>
-
-{/literal}
-
-</td>
-</tr>
-
-<tr>
-<td style="border-color: rgb( 100, 100, 255); border-style: none solid none none;border-width: 2px;margin-top: 0;vertical-align: top;">
-
-&nbsp;Next Pill Count <br>
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
+</script>{/literal} </td>
+     </tr>
+     <tr>
+      <td style="margin-top: 0;vertical-align: top;"><br>
+       &nbsp;Next Pill Count <br>
+       <span class="dateTime">
+       <pre style="margin-top:0; margin-bottom:0;">
 
 <input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_pill_ct_c" id="next_pill_ct_c" value="{$datarow.next_pill_ct_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pill_ct_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pill_ct_c_trigger"></pre>
-
-</span>
-
-{literal}<script type="text/javascript">
+       </span> {literal}<script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1231,21 +998,15 @@ weekNumbers:false
 );
 
 </script>{/literal}
-
-{if $smarty.request.action=='PatientEncounter'}
-<br/>
-
-&nbsp;Next PCP visit <br>
-
-<span class="dateTime"><pre style="margin-top:0; margin-bottom:0;">
+       
+       {if $smarty.request.action=='PatientEncounter'} <br/>
+       &nbsp;Next PCP visit <br>
+       <span class="dateTime">
+       <pre style="margin-top:0; margin-bottom:0;">
 
 <input class="date_input" tabindex="40" autocomplete="off" type="text" name="next_pcp_visit_c" id="next_pcp_visit_c" onchange='check_date(this);' value="{$datarow.next_pcp_visit_c|date_format:'%m/%d/%Y'}" {if ( time() - strtotime($datarow.next_pcp_visit_c)  > 0   )} style="color:red" {/if} title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pcp_visit_c_trigger"></pre>
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
+       </span> {literal} 
+       <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1271,49 +1032,66 @@ weekNumbers:false
 
 );
 
-</script>
+</script> 
+       {/literal}
+       {/if} </td>
+     </tr>
+     <tr>
+      <td ><br>
+       &nbsp;Next PMP Review <br>
+       <a href='https://gateway.hhs.state.ma.us/authn/login.do' target='_blank' style='display: inline; text-align: right;'>Link to PMP</a><br>
+       <span class="dateTime">
+       <pre style="margin-top:0; margin-bottom:0;">
 
-{/literal}
-{/if}
-</td>
+<input class="date_input" tabindex="56" autocomplete="off" type="text" name="next_pmp_review_due_c" id="next_pmp_review_due_c" onchange='check_date(this);' value="{$datarow.next_pmp_review_due_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pmp_review_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pmp_review_due_c_trigger" ></pre>
+       </span> {literal} 
+       <script type="text/javascript">
 
-<td>
+Calendar.setup ({
 
-<br/>
+inputField : "next_pmp_review_due_c",
 
-&nbsp;Next appointment for:<br/>
+ifFormat : "%m/%d/%Y %I:%M%P",
 
-<select name="pretty" id="pretty" tabindex="60" class="ui-selectmenu-menu">
+daFormat : "%m/%d/%Y %I:%M%P",
 
-<option id="NOT">Please Select</option>
+button : "next_pmp_review_due_c_trigger",
 
-<option id="PT">Physical Therapy</option>
+singleClick : true,
 
-<option id="APC">Anesthesia Pain Clinic</option> 
+dateStr : "",
 
-<option id="INJ">Injection Clinic</option> 
+startWeekday: 0,
 
-<option id="BEH">Behavioral Health</option> 
+step : 1,
 
-<option id="STR">Stress Reduction Clinic</option> 
+weekNumbers:false
 
-<option id="NEU">Neuro Pain Clinic</option> 
+}
 
-<option id="NNP">Non-Network Pain Clinic</option> 
+);
 
-<option id="OTH">Other</option>
-
-</select>
-
-<span class="dateTime">
-
-<input class="date_input" autocomplete="off" type="text" name="pretty_date" id="pretty_date" tabindex="64" readonly onchange='check_date(this);' value="" title=""  size="11" maxlength="10">
-
-<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="pretty_date_trigger">
-
-</span>
-
-{literal}<script type="text/javascript">
+</script> 
+       {/literal} </td>
+     </tr>
+     <tr>
+      <td><br/>
+       &nbsp;Next appointment for:<br/>
+       <select name="pretty" id="pretty" tabindex="60" class="ui-selectmenu-menu">
+        <option id="NOT">Please Select</option>
+        <option id="PT">Physical Therapy</option>
+        <option id="APC">Anesthesia Pain Clinic</option>
+        <option id="INJ">Injection Clinic</option>
+        <option id="BEH">Behavioral Health</option>
+        <option id="STR">Stress Reduction Clinic</option>
+        <option id="NEU">Neuro Pain Clinic</option>
+        <option id="NNP">Non-Network Pain Clinic</option>
+        <option id="OTH">Other</option>
+       </select>
+       <br>
+       <span class="dateTime">
+       <input class="date_input" autocomplete="off" type="text" name="pretty_date" id="pretty_date" tabindex="64" readonly onchange='check_date(this);' value="" title=""  size="11" maxlength="10">
+       <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="pretty_date_trigger"> </span> {literal}<script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1340,12 +1118,9 @@ weekNumbers:false
 );
 
 </script>{/literal}
-
-<input title="Add" accesskey="a" class="button" onclick="add_date_to_list()" tabindex="68" type="button" name="button" value="Add" id="Add_button">
-
-{literal}
-
-<script type="text/javascript">
+       <input title="Add" accesskey="a" class="button" onclick="add_date_to_list()" tabindex="68" type="button" name="button" value="Add" id="Add_button">
+       {literal} 
+       <script type="text/javascript">
 
 $('img.remove').live('click', function(){
 
@@ -1457,120 +1232,69 @@ document.getElementById('pretty_date').value="";
 
 }
 
-</script>
-
-
-
-{/literal}
-
-</td>
-
-</tr>
-
-<tr>
-
-<td rowspan='2'>
-
-<div style="overflow: auto; ">
-
-&nbsp;<ul id="entry_list" style="margin-left:0px;padding-left:1px;"></ul>
-
-</div>
-
-<input type="hidden" tabindex="23" name="next_appt_other_c" id="next_appt_other_c" size="22" maxlength="20" value="" title="">
-
-</td>
-
-</tr>
-
-
-
-</table>
-{if $smarty.request.action=='aaa'}
-<table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
-
-<tr>
-
-<td><h3><span style="text-align:centre;" >Contract</span></h3></td>
-
-</tr>
-
-
-
-<tr><td>
-Aberrant Behavior Noted:
-<br>
-<select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" class="ui-selectmenu-menu" multiple="multiple" style="height:140px">
-
-<optgroup>
-<optgroup label="Monitoring Non-adherence">
-<option value="RefusePillCount" id="RefusePillCount">Refuse pill count</option>
-
-<option value="RefuseUDT" id="RefuseUDT">Refuse UDT</option> 
-</optgroup>
-
-<optgroup>
-<optgroup label="Monitoring Concerning behavior">
-<option value="IncorrectPillCount" id="IncorrectPillCount">Incorrect pill count</option> 
-
-<option value="UnexpectedUDTResult" id="UnexpectedUDTResult">Unexpected UDT result</option> 
-</optgroup>
-
-<optgroup>
-<optgroup label="Med management Concerning behavior">
-<option value="UnsanctionedDoseEscalation" id="UnsanctionedDoseEscalation">Unsanctioned dose escalation</option> 
-
-</optgroup>
-
-<optgroup>
-<optgroup label="Concerning behavior">
-<option value="ConcerningBehaviorPMP" id="ConcerningBehaviorPMP">PMP</option> 
-
-<option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - reports from family, intoxication, disruptive behaviors</option>
-</optgroup>
-
-</select><br>
-<input type="hidden" name="aberrant_behavior_noted_cx" value="0">
-
-<!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted-->
-
-</td></tr>
-
-
-
-<tr><td>
-
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-
-<input type="hidden" name="pt_confirms_taking_cx" value="0">
-
-<input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed
-
-</td></tr>
-
-
-
-<tr><td>
-
-<img src= "" height="1" width ="1" alt="" vspace="2"/><br/>
-
-<input type="hidden" name="pt_confirms_storing_cx" value="0"><input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  > 0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely
-
-</td></tr>
-
-
-
-<tr><td>
-
-<input type="hidden" name="narcotic_contract_in_chart_cx" value="0"><input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  > 0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><span class="dateTime"> <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
-
-<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger">
-
-</span>
-
-{literal}
-
-<script type="text/javascript">
+</script> 
+       {/literal} </td>
+     </tr>
+     <tr>
+      <td rowspan='2'><div style="overflow: auto; "> &nbsp;
+        <ul id="entry_list" style="margin-left:0px;padding-left:1px;">
+        </ul>
+       </div>
+       <input type="hidden" tabindex="23" name="next_appt_other_c" id="next_appt_other_c" size="22" maxlength="20" value="" title=""></td>
+     </tr>
+    </table>
+    {if $smarty.request.action=='aaa'}
+    <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
+     <tr>
+      <td><h3><span style="text-align:centre;" >Contract</span></h3></td>
+     </tr>
+     <tr>
+      <td> Aberrant Behavior Noted: <br>
+       <select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" class="ui-selectmenu-menu" multiple="multiple" style="height:140px">
+        <optgroup>
+        <optgroup label="Monitoring Non-adherence">
+        <option value="RefusePillCount" id="RefusePillCount">Refuse pill count</option>
+        <option value="RefuseUDT" id="RefuseUDT">Refuse UDT</option>
+        </optgroup>
+        <optgroup>
+        <optgroup label="Monitoring Concerning behavior">
+        <option value="IncorrectPillCount" id="IncorrectPillCount">Incorrect pill count</option>
+        <option value="UnexpectedUDTResult" id="UnexpectedUDTResult">Unexpected UDT result</option>
+        </optgroup>
+        <optgroup>
+        <optgroup label="Med management Concerning behavior">
+        <option value="UnsanctionedDoseEscalation" id="UnsanctionedDoseEscalation">Unsanctioned dose escalation</option>
+        </optgroup>
+        <optgroup>
+        <optgroup label="Concerning behavior">
+        <option value="ConcerningBehaviorPMP" id="ConcerningBehaviorPMP">PMP</option>
+        <option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - reports from family, intoxication, disruptive behaviors</option>
+        </optgroup>
+       </select>
+       <br>
+       <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
+       
+       <!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted--></td>
+     </tr>
+     <tr>
+      <td>&nbsp;<br/>
+       <input type="hidden" name="pt_confirms_taking_cx" value="0">
+       <input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  >
+       0   )} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed </td>
+     </tr>
+     <tr>
+      <td>&nbsp;<br/>
+       <input type="hidden" name="pt_confirms_storing_cx" value="0">
+       <input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  >
+       0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely </td>
+     </tr>
+     <tr>
+      <td><input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
+       <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
+       0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><span class="dateTime">
+       <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
+       <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger"> </span> {literal} 
+       <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1596,228 +1320,138 @@ weekNumbers:false
 
 );
 
-</script>
-
-{/literal}
-
-</td></tr>
-
-
-
-</table>
-{/if}
-
-
-
-
-</td></tr>
-
-
-
-<tr>
-
-<td class="buttons">
-
-<input type="hidden" name="module" value="{$module}">
-
-{if isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true"}
-
-<input type="hidden" name="record" value="">
-
-<input type="hidden" name="duplicateSave" value="true">
-
-<input type="hidden" name="duplicateId" value="{$fields.id.value}">
-
-{else}
-
-<input type="hidden" name="record" value="{$fields.id.value}">
-
-{/if}
-
-<input type="hidden" name="isDuplicate" value="false">
-
-<input type="hidden" name="action">
-
-<input type="hidden" name="return_module" value="{$smarty.request.return_module}">
-
-<input type="hidden" name="return_action" value="{$smarty.request.return_action}">
-
-<input type="hidden" name="return_id" value="{$smarty.request.return_id}">
-
-<input type="hidden" name="module_tab"> 
-
-<input type="hidden" name="contact_role">
-
-{if (!empty($smarty.request.return_module) || !empty($smarty.request.relate_to)) && !(isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true")}
-
-<input type="hidden" name="relate_to" value="{if $smarty.request.return_relationship}{$smarty.request.return_relationship}{elseif $smarty.request.relate_to && empty($smarty.request.from_dcmenu)}{$smarty.request.relate_to}{elseif empty($isDCForm) && empty($smarty.request.from_dcmenu)}{$smarty.request.return_module}{/if}">
-
-<input type="hidden" name="relate_id" value="{$smarty.request.return_id}">
-
-{/if}
-
-<input type="hidden" name="offset" value="{$offset}">
-
-{assign var='place' value="_HEADER"} <!-- to be used for id for buttons with custom code in def files-->
-
-{{if isset($form.hidden)}}
-
-{{foreach from=$form.hidden item=field}}
-
-{{$field}}   
-
-{{/foreach}}
-
-{{/if}}
-
-{{if empty($form.button_location) || $form.button_location == 'top'}}
-
-{{if !empty($form) && !empty($form.buttons)}}
-
-   {{foreach from=$form.buttons key=val item=button}}
-
-      {{sugar_button module="$module" id="$button" form_id="$form_id" view="$view" appendTo="header_buttons" location="HEADER"}}
-
-   {{/foreach}}
-
-{{else}}
-
-{{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}}
-
-{{sugar_button module="$module" id="CANCEL" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}}
-
-{{/if}}
-
-{{if empty($form.hideAudit) || !$form.hideAudit}}
-
-{{sugar_button module="$module" id="Audit" view="$view" form_id="$form_id" appendTo="header_buttons"}}
-
-{{/if}}
-
-{{/if}}
-
-
-
-</td>
-
-<td align='right'>{{$ADMIN_EDIT}}
-
-{{if $panelCount == 0}}
-
+</script> 
+       {/literal} </td>
+     </tr>
+    </table>
+    {/if} </td>
+  </tr>
+  <tr>
+   <td class="buttons"><input type="hidden" name="module" value="{$module}">
+    {if isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true"}
+    <input type="hidden" name="record" value="">
+    <input type="hidden" name="duplicateSave" value="true">
+    <input type="hidden" name="duplicateId" value="{$fields.id.value}">
+    {else}
+    <input type="hidden" name="record" value="{$fields.id.value}">
+    {/if}
+    <input type="hidden" name="isDuplicate" value="false">
+    <input type="hidden" name="action">
+    <input type="hidden" name="return_module" value="{$smarty.request.return_module}">
+    <input type="hidden" name="return_action" value="{$smarty.request.return_action}">
+    <input type="hidden" name="return_id" value="{$smarty.request.return_id}">
+    <input type="hidden" name="module_tab">
+    <input type="hidden" name="contact_role">
+    {if (!empty($smarty.request.return_module) || !empty($smarty.request.relate_to)) && !(isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true")}
+    <input type="hidden" name="relate_to" value="{if $smarty.request.return_relationship}{$smarty.request.return_relationship}{elseif $smarty.request.relate_to && empty($smarty.request.from_dcmenu)}{$smarty.request.relate_to}{elseif empty($isDCForm) && empty($smarty.request.from_dcmenu)}{$smarty.request.return_module}{/if}">
+    <input type="hidden" name="relate_id" value="{$smarty.request.return_id}">
+    {/if}
+    <input type="hidden" name="offset" value="{$offset}">
+    {assign var='place' value="_HEADER"} <!-- to be used for id for buttons with custom code in def files--> 
+    
+    {{if isset($form.hidden)}}
+    
+    {{foreach from=$form.hidden item=field}}
+    
+    {{$field}}   
+    
+    {{/foreach}}
+    
+    {{/if}}
+    
+    {{if empty($form.button_location) || $form.button_location == 'top'}}
+    
+    {{if !empty($form) && !empty($form.buttons)}}
+    
+    {{foreach from=$form.buttons key=val item=button}}
+    
+    {{sugar_button module="$module" id="$button" form_id="$form_id" view="$view" appendTo="header_buttons" location="HEADER"}}
+    
+    {{/foreach}}
+    
+    {{else}}
+    
+    {{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}}
+    
+    {{sugar_button module="$module" id="CANCEL" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}}
+    
+    {{/if}}
+    
+    {{if empty($form.hideAudit) || !$form.hideAudit}}
+    
+    {{sugar_button module="$module" id="Audit" view="$view" form_id="$form_id" appendTo="header_buttons"}}
+    
+    {{/if}}
+    
+    {{/if}} </td>
+   <td align='right'>{{$ADMIN_EDIT}}
+    
+    {{if $panelCount == 0}}
+    
     {{* Render tag for VCR control if SHOW_VCR_CONTROL is true *}}
-
-	{{if $SHOW_VCR_CONTROL}}
-
-		{$PAGINATION}
-
-	{{/if}}
-
-{{/if}}
-
-</td>
-
-</tr>
-
-</table>
-
-
-
-
-
-<!-- START OF UTS accordion-->
-
-{if $notes_flag == "false"}
-
-<div id='accordion1'>
-
-<h3 style='font-size:16px;font-weight:bold;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lab Results</h3><div>
-
-<table  width="40%" cellspacing="0" cellpadding="0" border="1" class="list view">
-
-  
-
-  <tbody>
-
-    <tr height = "20">
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  Urine Tox Date </div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  OXYCODONE </div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  OPIATE URINE </div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  METHADONE </div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  COCAINE</div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BUPRENORPHINE</div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BENZO</div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  BARBITURATES</div> </th>
-
-		<th width="10%" scope="col">    <div align="left" width="100%" style="white-space: normal;">  AMPHETAMINES</div> </th>
-
-
-
-		
-
+    
+    {{if $SHOW_VCR_CONTROL}}
+    
+    {$PAGINATION}
+    
+    {{/if}}
+    
+    {{/if}} </td>
+  </tr>
+ </table>
+ 
+ <!-- START OF UTS accordion--> 
+ 
+ {if $notes_flag == "false"}
+ <div id='accordion1'>
+  <h3 style='font-size:16px;font-weight:bold;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lab Results</h3>
+  <div>
+   <table  width="40%" cellspacing="0" cellpadding="0" border="1" class="list view">
+    <tbody>
+     <tr height = "20">
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> Urine Tox Date </div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> OXYCODONE </div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> OPIATE URINE </div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> METHADONE </div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> COCAINE</div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> BUPRENORPHINE</div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> BENZO</div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> BARBITURATES</div>
+      </th>
+      <th width="10%" scope="col"> <div align="left" width="100%" style="white-space: normal;"> AMPHETAMINES</div>
+      </th>
+     </tr>
+    {foreach name=myrowIteration from=$mydatauts key=id item=myrowData}
+    <tr class="oddListRowS1" height="20">
+     <td class="" valign="top" align="left" scope="row"> {$myrowData.thisdate1} </td>
+     <td class="" valign="top" align="left"> {$myrowData.oxy} </td>
+     <td class="" valign="top" align="left"> {$myrowData.opiate} </td>
+     <td class="" valign="top" align="left"> {$myrowData.methadone} </td>
+     <td class="" valign="top" align="left"> {$myrowData.cocaine} </td>
+     <td class="" valign="top" align="left"> {$myrowData.bupreno} </td>
+     <td class="" valign="top" align="left"> {$myrowData.benzo} </td>
+     <td class="" valign="top" align="left"> {$myrowData.barbi} </td>
+     <td class="" valign="top" align="left"> {$myrowData.amph} </td>
     </tr>
-
-	
-
-	
-	{foreach name=myrowIteration from=$mydatauts key=id item=myrowData}
-
-	 
-
-	     <tr class="oddListRowS1" height="20">
-
-		    <td class="" valign="top" align="left" scope="row"> {$myrowData.thisdate1} </td>
-
-            <td class="" valign="top" align="left"> {$myrowData.oxy}  </td>
-
-            <td class="" valign="top" align="left"> {$myrowData.opiate} </td>
-
-            <td class="" valign="top" align="left"> {$myrowData.methadone} </td>
-
-			<td class="" valign="top" align="left"> {$myrowData.cocaine} </td>
-
-			<td class="" valign="top" align="left"> {$myrowData.bupreno} </td>
-
-			<td class="" valign="top" align="left"> {$myrowData.benzo} </td>
-
-			<td class="" valign="top" align="left"> {$myrowData.barbi} </td>
-
-			<td class="" valign="top" align="left"> {$myrowData.amph} </td>
-
-         </tr>
-
-
-
-	{/foreach}
-
-
-
-  </tbody>
-
-
-
-</table></div>
-
-</div>
-
-{/if}
-
-<!--accordion -->
-
-
-
-<span id='tabcounterJS'><script>SUGAR.TabFields=new Array();//this will be used to track tabindexes for references</script></span>
-
-
-
-<div id="{{$form_name}}_tabs"
+    {/foreach}
+     </tbody>
+    
+   </table>
+  </div>
+ </div>
+ {/if} 
+ 
+ <!--accordion --> 
+ 
+ <span id='tabcounterJS'><script>SUGAR.TabFields=new Array();//this will be used to track tabindexes for references</script></span>
+ <div id="{{$form_name}}_tabs"
 
 {{if $useTabs}}
 
@@ -1826,180 +1460,124 @@ class="yui-navset"
 {{/if}}
 
 >
-
-    {{if $useTabs}}
-
-    {* Generate the Tab headers *}
-
-    {{counter name="tabCount" start=-1 print=false assign="tabCount"}}
-
-    <ul class="yui-nav">
-
-    {{foreach name=section from=$sectionPanels key=label item=panel}}
-
-        {{counter name="tabCount" print=false}}
-
-        {{capture name=label_upper assign=label_upper}}{{$label|upper}}{{/capture}}
-
-        {{if (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == true)}}
-
-        <li class="selected"><a id="tab{{$tabCount}}" href="javascript:void({{$tabCount}})"><em>{sugar_translate label='{{$label}}' module='{{$module}}'}</em></a></li>
-
-        {{/if}}
-
-    {{/foreach}}
-
-    </ul>
-
-    {{/if}}
-
-    <div {{if $useTabs}}class="yui-content"{{/if}}>
-
-
-
-{{assign var='tabIndexVal' value=0}}
-
-{{* Loop through all top level panels first *}}
-
-{{counter name="panelCount" start=-1 print=false assign="panelCount"}}
-
-{{counter name="tabCount" start=-1 print=false assign="tabCount"}}
-
-{{foreach name=section from=$sectionPanels key=label item=panel}}
-
-{{counter name="panelCount" print=false}}
-
-{{capture name=label_upper assign=label_upper}}{{$label|upper}}{{/capture}}
-
+ {{if $useTabs}}
+ 
+ {* Generate the Tab headers *}
+ 
+ {{counter name="tabCount" start=-1 print=false assign="tabCount"}}
+ <ul class="yui-nav">
+  {{foreach name=section from=$sectionPanels key=label item=panel}}
+  
+  {{counter name="tabCount" print=false}}
+  
+  {{capture name=label_upper assign=label_upper}}{{$label|upper}}{{/capture}}
+  
   {{if (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == true)}}
-
-    {{counter name="tabCount" print=false}}
-
-    {{if $tabCount != 0}}</div>{{/if}}
-
-    <div id='tabcontent{{$tabCount}}'>
-
+  <li class="selected"><a id="tab{{$tabCount}}" href="javascript:void({{$tabCount}})"><em>{sugar_translate label='{{$label}}' module='{{$module}}'}</em></a></li>
   {{/if}}
-
-
-
-{{* Print out the table data *}}
-
-{{if $label == 'DEFAULT'}}
-
-  <div id="detailpanel_{{$smarty.foreach.section.iteration}}" >
-
-{{else}}
-
-  <div id="detailpanel_{{$smarty.foreach.section.iteration}}" class="{$def.templateMeta.panelClass|default:'edit view edit508'}">
-
-{{/if}}
-
-
-
-{counter name="panelFieldCount" start=0 print=false assign="panelFieldCount"}
-
-{{* Check to see if the panel variable is an array, if not, we'll attempt an include with type param php *}}
-
-{{* See function.sugar_include.php *}}
-
-{{if !is_array($panel)}}
-
+  
+  {{/foreach}}
+ </ul>
+ {{/if}}
+ <div {{if $useTabs}}class="yui-content"{{/if}}> {{assign var='tabIndexVal' value=0}}
+  
+  {{* Loop through all top level panels first *}}
+  
+  {{counter name="panelCount" start=-1 print=false assign="panelCount"}}
+  
+  {{counter name="tabCount" start=-1 print=false assign="tabCount"}}
+  
+  {{foreach name=section from=$sectionPanels key=label item=panel}}
+  
+  {{counter name="panelCount" print=false}}
+  
+  {{capture name=label_upper assign=label_upper}}{{$label|upper}}{{/capture}}
+  
+  {{if (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == true)}}
+  
+  {{counter name="tabCount" print=false}}
+  
+  {{if $tabCount != 0}}</div>
+ {{/if}}
+ <div id='tabcontent{{$tabCount}}'> {{/if}}
+  
+  
+  
+  {{* Print out the table data *}}
+  
+  {{if $label == 'DEFAULT'}}
+  <div id="detailpanel_{{$smarty.foreach.section.iteration}}" > {{else}}
+   <div id="detailpanel_{{$smarty.foreach.section.iteration}}" class="{$def.templateMeta.panelClass|default:'edit view edit508'}"> {{/if}}
+    
+    
+    
+    {counter name="panelFieldCount" start=0 print=false assign="panelFieldCount"}
+    
+    {{* Check to see if the panel variable is an array, if not, we'll attempt an include with type param php *}}
+    
+    {{* See function.sugar_include.php *}}
+    
+    {{if !is_array($panel)}}
+    
     {sugar_include type='php' file='{{$panel}}'}
-
-{{else}}
-
-
-
-{{* Only show header if it is not default or an int value *}}
-
-{{if !empty($label) && !is_int($label) && $label != 'DEFAULT' && $showSectionPanelsTitles && (!isset($tabDefs[$label_upper].newTab) || (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == false)) && $view != "QuickCreate"}}
-
-<h4>&nbsp;&nbsp;
-
-  <a href="javascript:void(0)" class="collapseLink" onclick="collapsePanel({{$smarty.foreach.section.iteration}});">
-
-  <img border="0" id="detailpanel_{{$smarty.foreach.section.iteration}}_img_hide" src="{sugar_getimagepath file="basic_search.gif"}"></a>
-
-  <a href="javascript:void(0)" class="expandLink" onclick="expandPanel({{$smarty.foreach.section.iteration}});">
-
-  <img border="0" id="detailpanel_{{$smarty.foreach.section.iteration}}_img_show" src="{sugar_getimagepath file="advanced_search.gif"}"></a>
-
-  {sugar_translate label='{{$label}}' module='{{$module}}'}
-
-  {{if ( isset($tabDefs[$label_upper].panelDefault) && $tabDefs[$label_upper].panelDefault == "collapsed" && isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == false) }}
-
-    {{assign var='panelState' value=$tabDefs[$label_upper].panelDefault}}
-
-  {{else}}
-
-    {{assign var='panelState' value="expanded"}}
-
-  {{/if}}
-
-  {{if isset($panelState) && $panelState == 'collapsed'}}
-
-    <script>
+    
+    {{else}}
+    
+    
+    
+    {{* Only show header if it is not default or an int value *}}
+    
+    {{if !empty($label) && !is_int($label) && $label != 'DEFAULT' && $showSectionPanelsTitles && (!isset($tabDefs[$label_upper].newTab) || (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == false)) && $view != "QuickCreate"}}
+    <h4>&nbsp;&nbsp; <a href="javascript:void(0)" class="collapseLink" onclick="collapsePanel({{$smarty.foreach.section.iteration}});"> <img border="0" id="detailpanel_{{$smarty.foreach.section.iteration}}_img_hide" src="{sugar_getimagepath file="basic_search.gif"}"></a> <a href="javascript:void(0)" class="expandLink" onclick="expandPanel({{$smarty.foreach.section.iteration}});"> <img border="0" id="detailpanel_{{$smarty.foreach.section.iteration}}_img_show" src="{sugar_getimagepath file="advanced_search.gif"}"></a> {sugar_translate label='{{$label}}' module='{{$module}}'}
+     
+     {{if ( isset($tabDefs[$label_upper].panelDefault) && $tabDefs[$label_upper].panelDefault == "collapsed" && isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == false) }}
+     
+     {{assign var='panelState' value=$tabDefs[$label_upper].panelDefault}}
+     
+     {{else}}
+     
+     {{assign var='panelState' value="expanded"}}
+     
+     {{/if}}
+     
+     {{if isset($panelState) && $panelState == 'collapsed'}} 
+     <script>
 
       document.getElementById('detailpanel_{{$smarty.foreach.section.iteration}}').className += ' collapsed';
 
-    </script>
-
-    {{else}}
-
-    <script>
+    </script> 
+     {{else}} 
+     <script>
 
       document.getElementById('detailpanel_{{$smarty.foreach.section.iteration}}').className += ' expanded';
 
-    </script>
-
-  {{/if}}
-
-</h4>
-
- {{/if}}
-
-<input accesskey=""  type="hidden" name="uts_not_collected_c" size="30" maxlength="255" value="NotApplicableInPrescription" title="">
-
-<input type='hidden' name='reg_patient_reg_encounterreg_patient_ida' id='reg_patient_reg_encounterreg_patient_ida' >
-
-<input type='hidden' name='date_last_modified' id='date_last_modified' >
-
-<input type='hidden' name='pcp_name_c' id='pcp_name_c' value='{$provrow.provname}'>
-
-<input  type="hidden" name="pt_active_c" value="0">
-
-<input type="checkbox" style="display:none" id="pt_active_c" name="pt_active_c" value="1"  checked="" >
-
-
-
-{{if !empty($label) && !is_int($label) && $label != 'DEFAULT' && $showSectionPanelsTitles && (!isset($tabDefs[$label_upper].newTab) || (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == false)) && $view != "QuickCreate"}}
-
-<script type="text/javascript">SUGAR.util.doWhen("typeof initPanel == 'function'", function() {ldelim} initPanel({{$smarty.foreach.section.iteration}}, '{{$panelState}}'); {rdelim}); </script>
-
-{{/if}}
-
-
-
-{{/if}}
-
-
-
-</div>
-
-{if $panelFieldCount == 0}
-
-
-
-
-
-{/if}
-
-{{/foreach}}
-
-</div></div>
-
-<script language="javascript">
+    </script> 
+     {{/if}} </h4>
+    {{/if}}
+    <input accesskey=""  type="hidden" name="uts_not_collected_c" size="30" maxlength="255" value="NotApplicableInPrescription" title="">
+    <input type='hidden' name='reg_patient_reg_encounterreg_patient_ida' id='reg_patient_reg_encounterreg_patient_ida' >
+    <input type='hidden' name='date_last_modified' id='date_last_modified' >
+    <input type='hidden' name='pcp_name_c' id='pcp_name_c' value='{$provrow.provname}'>
+    <input  type="hidden" name="pt_active_c" value="0">
+    <input type="checkbox" style="display:none" id="pt_active_c" name="pt_active_c" value="1"  checked="" >
+    {{if !empty($label) && !is_int($label) && $label != 'DEFAULT' && $showSectionPanelsTitles && (!isset($tabDefs[$label_upper].newTab) || (isset($tabDefs[$label_upper].newTab) && $tabDefs[$label_upper].newTab == false)) && $view != "QuickCreate"}} 
+    <script type="text/javascript">SUGAR.util.doWhen("typeof initPanel == 'function'", function() {ldelim} initPanel({{$smarty.foreach.section.iteration}}, '{{$panelState}}'); {rdelim}); </script> 
+    {{/if}}
+    
+    
+    
+    {{/if}} </div>
+   {if $panelFieldCount == 0}
+   
+   
+   
+   
+   
+   {/if}
+   
+   {{/foreach}} </div>
+ </div>
+ <script language="javascript">
 
     var _form_id = '{$form_id}';
 
@@ -2016,11 +1594,7 @@ class="yui-navset"
     {/literal}
 
 </script>
-
-
-
 </form>
-
 {{if $externalJSFile}}
 
 {sugar_include include=$externalJSFile}
@@ -2033,36 +1607,31 @@ class="yui-navset"
 
 
 
-{{if isset($scriptBlocks)}}
+{{if isset($scriptBlocks)}} 
 
-<!-- Begin Meta-Data Javascript -->
+<!-- Begin Meta-Data Javascript --> 
 
-{{$scriptBlocks}}
+{{$scriptBlocks}} 
 
-<!-- End Meta-Data Javascript -->
+<!-- End Meta-Data Javascript --> 
 
-{{/if}}
-
+{{/if}} 
 <script>SUGAR.util.doWhen("document.getElementById('EditView') != null",
 
         function(){ldelim}SUGAR.util.buildAccessKeyLabels();{rdelim});
 
-</script>
-
+</script> 
 {{if $useTabs}}
 
-{sugar_getscript file="cache/include/javascript/sugar_grp_yui_widgets.js"}
-
+{sugar_getscript file="cache/include/javascript/sugar_grp_yui_widgets.js"} 
 <script type="text/javascript">
 
 var {{$form_name}}_tabs = new YAHOO.widget.TabView("{{$form_name}}_tabs");
 
 {{$form_name}}_tabs.selectTab(0);
 
-</script>
-
-{{/if}}
-
+</script> 
+{{/if}} 
 <script type="text/javascript">
 
 YAHOO.util.Event.onContentReady("{{$form_name}}",
@@ -2097,9 +1666,4 @@ $(document).ready(function() {ldelim}
 
 
 
-</script>
-
-
-
-
-
+</script> 
