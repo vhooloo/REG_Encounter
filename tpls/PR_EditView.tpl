@@ -624,8 +624,7 @@ a.style.display = "none";
  <table style="border-color: rgb( 100, 100, 255); border-style: solid none none none ; border-collapse:collapse; margin-top: 0;vertical-align: top;" width="100%" cellpadding="0" cellspacing="0" border="0" class="edit view panelContainer">
    <tr >
   
-  <td style="width:80%;border-color: rgb( 100, 100, 255); border-style: solid solid solid none; border-width: 2px; margin-top: 0;vertical-align: top;" colspan="3" >
-  <table width="100%" style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
+  <td style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid solid solid none; border-width: 2px; margin-top: 0;vertical-align: top;" colspan="3" ><table width="100%" style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
     <tr > {assign var=pro_summary value=":"|explode:$datarow.summary}
      <td  width="66.6%" >Encounter Summary
       <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{if ($encountype == "refill") } Refill {/if}" title=""  onblur="set_session(this.id,this.value);"></td>
@@ -681,8 +680,7 @@ a.style.display = "none";
        <option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
        <option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
        <option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
-       <option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH
-       </option>
+       <option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH </option>
       </select></td>
     </tr>
     <tr>
@@ -713,7 +711,7 @@ a.style.display = "none";
       <select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" multiple="multiple" style="height:190px; width:340px !important">
        <optgroup>
        <optgroup label="Monitoring Non-adherence">
-       <option value="RefusePillCount" id="RefusePillCount">Refuse pill count</option>
+       <option value="RefusePillCount" id="RefusePillCount" >Refuse pill count</option>
        <option value="RefuseUDT" id="RefuseUDT">Refuse UDT</option>
        </optgroup>
        <optgroup>
@@ -732,84 +730,50 @@ a.style.display = "none";
        </optgroup>
       </select></td>
      <td width="50%" style="padding-left:5px !important"><strong>Risk Level &nbsp;
-      <select name='risklvl_c'  id='risklvl_c' disabled>
+      <select name='risklvl_c' id='risklvl_c' disabled >
        <option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
        <option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
        <option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
        <option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option>
       </select>
-      </strong>&nbsp;&nbsp;<a class="button primary" style="text-decoration:none" href="index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}" target="_blank">View</a><br>
+      </strong>&nbsp;&nbsp;<a class="button primary" style="text-decoration:none" href="index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}&flag=1" target="_blank">View</a><br>
       <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
       
       <!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted--> 
+      <!-- Dummy hidden fields start (Navraj) -->
+        <input type="hidden" name="pt_confirms_taking_cx" value="0">
+        <input type="hidden" id="pt_confirms_taking_c" name="pt_confirms_taking_c" {if ( $datarow.pt_confirms_taking_c > 0)} value="1" {/if}>
+        <input type="hidden" name="pt_confirms_storing_cx" value="0">
+        <input type="hidden" id="pt_confirms_storing_c" name="pt_confirms_storing_c" {if ( $datarow.pt_confirms_storing_c  > 0 )} value="1" {/if}>
+        <input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
+        <input type="hidden" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" {if ( $datarow.narcotic_contract_in_chart_c  > 0)} value="1" {/if} />
+        <input type="hidden" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c" value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" />
+        <input type="hidden" name="nxt_appt_pain_c" id="nxt_appt_pain_c" value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" >
+        <input type="hidden" name="pretty_date" id="pretty_date" value="" >
       
-      &nbsp;<br/>
+      <!-- Dummy hidden fields end (Navraj) -->
+
+      {if $smarty.request.action=='PetientEncounter'}
       
-      <input type="hidden" name="pt_confirms_taking_cx" value="0">
-      <input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""  {if ( $datarow.pt_confirms_storing_c > 0)} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed<br>
+      <input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""  {if ( $datarow.pt_confirms_taking_c > 0)} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed<br>
       &nbsp;<br/>
       <input type="hidden" name="pt_confirms_storing_cx" value="0">
       <input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  >
       0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely<br>
       &nbsp;<br/>
-      <input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
-      <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
-      0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><br>
-      <span class="dateTime">
-      <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
-      <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger"> </span> {literal} 
-      <script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "narcotic_contract_sign_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "narcotic_contract_sign_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script> 
-      {/literal} </td>
-    </tr>
-    <tr>
-     <td></td>
-    </tr>
-   </table>
-   <br>
-   {{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}}
-   
-   
-   {{sugar_action_menu buttons=$header_buttons class="fancymenu" flat=true}} <span id="copy_text_div">
-   <input type="button" id="copy-button" onclick="copyToClipboard()" title="Copy information to Logician." value="Copy">
-   </input>
-   <textarea id="clipboard_textarea" style="display:none"></textarea>
-   </div></td>
-  
-   <td style="width:20%;border-color: rgb( 100, 100, 255); border-style: solid none solid solid;border-width: 2px; margin-top: 0;vertical-align: top;"><table style="width:100%;border-collapse:collapse;">
-     <tr>
-      <td style="border-color: rgb( 100, 100, 255); border-style: none none solid none;border-width: 2px;margin-top: 0;vertical-align: top;text-align:center"><h3 style="margin-top: 5px;">Clinical Data</h3></td>
-     </tr>
-     <tr>
-      <td style="width:50%;margin-top: 0;vertical-align: top;" ><br>
-       &nbsp;Next Rx Refill <br>
-       <span class="dateTime"> {literal} 
-       <script type="text/javascript">
+      {/if} <br>
+      <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+       <tr>
+        <td ><input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
+         <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
+         0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span></td>
+        <td><span class="dateTime">
+         <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10"> <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="narcotic_contract_sign_c_trigger"> </span></td>
+       </tr>
+       <tr>
+        <td width="70%" align="right" >Next Rx Refill : &nbsp;&nbsp;</td>
+        <td width="30%"><span class="dateTime"> {literal} 
+         <script type="text/javascript">
 
 function check_date(element){
 
@@ -862,10 +826,10 @@ function check_date(element){
 }
 
 </script> 
-       {/literal}
-       <pre style="margin-top:0; margin-bottom:0;"><input class="date_input" autocomplete="off" tabindex="24" type="text" name="next_rx_refill_due_c" onchange='check_date(this);' id="next_rx_refill_due_c" value="{$datarow.next_rx_refill_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_rx_refill_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_rx_refill_due_c_trigger"></pre>
-       </span> {literal} 
-       <script type="text/javascript">
+         {/literal}
+         <input class="date_input" autocomplete="off" tabindex="24" type="text" name="next_rx_refill_due_c" onchange='check_date(this);' id="next_rx_refill_due_c" value="{$datarow.next_rx_refill_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_rx_refill_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="next_rx_refill_due_c_trigger">
+         </span> {literal} 
+         <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -892,15 +856,15 @@ weekNumbers:false
 );
 
 </script> 
-       {/literal} </td>
-     </tr>
-     <tr>
-      <td style="width:50%;vertical-align: top;"><br/>
-       &nbsp;Next NCM Visit<br/>
-       <span class="dateTime">
-       <input class="date_input" tabindex="48" autocomplete="off" type="text" name="nxt_appt_pain_c" id="nxt_appt_pain_c" onchange='check_date(this);' value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.nxt_appt_pain_c)  >
-       0   )} style="color:red" {/if}> <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="nxt_appt_pain_c_trigger"> </span> {literal} 
-       <script type="text/javascript">
+         {/literal}</td>
+       </tr>
+       {if $smarty.request.action=='PetientEncounter'}
+       <tr>
+        <td align="right">Next NCM Visit : &nbsp;&nbsp;</td>
+        <td><span class="dateTime">
+         <input class="date_input" tabindex="48" autocomplete="off" type="text" name="nxt_appt_pain_c" id="nxt_appt_pain_c" onchange='check_date(this);' value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.nxt_appt_pain_c)  >
+         0   )} style="color:red" {/if}> <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="nxt_appt_pain_c_trigger"> </span> {literal} 
+         <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -927,51 +891,17 @@ weekNumbers:false
 );
 
 </script> 
-       {/literal} </td>
-     </tr>
-     <tr>
-      <td style=";margin-top: 0;vertical-align: top;"><br/>
-       &nbsp;Next UTS due <br>
-       <span class="dateTime">
-       <pre style="margin-top:0; margin-bottom:0;">
+         {/literal}</td>
+       </tr>
+       {/if}
+       <tr>
+        <td align="right">{if $smarty.request.action=='PetientEncounter'}
+         &nbsp;Next Pill Count {else}Pill Count {/if} : &nbsp;&nbsp;</td>
+        <td><span class="dateTime">
+         <pre style="margin-top:0; margin-bottom:0;">
 
-<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_uts_due_c" id="next_uts_due_c" value="{$datarow.next_uts_due_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_uts_due_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_uts_due_c_trigger"></pre>
-       </span> {literal}<script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "next_uts_due_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "next_uts_due_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script>{/literal} </td>
-     </tr>
-     <tr>
-      <td style="margin-top: 0;vertical-align: top;"><br>
-       &nbsp;Next Pill Count <br>
-       <span class="dateTime">
-       <pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_pill_ct_c" id="next_pill_ct_c" value="{$datarow.next_pill_ct_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pill_ct_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pill_ct_c_trigger"></pre>
-       </span> {literal}<script type="text/javascript">
+<input class="date_input" autocomplete="off" tabindex="32" type="text" onchange='check_date(this);' name="next_pill_ct_c" id="next_pill_ct_c" value="{$datarow.next_pill_ct_c|date_format:'%m/%d/%Y'}" title="" size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pill_ct_c)  > 0   )} style="color:red" {/if}>&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="next_pill_ct_c_trigger"></pre>
+         </span> {literal}<script type="text/javascript">
 
 Calendar.setup ({
 
@@ -997,55 +927,17 @@ weekNumbers:false
 
 );
 
-</script>{/literal}
-       
-       {if $smarty.request.action=='PatientEncounter'} <br/>
-       &nbsp;Next PCP visit <br>
-       <span class="dateTime">
-       <pre style="margin-top:0; margin-bottom:0;">
+</script>{/literal} </td>
+       </tr>
+       <tr>
+        <td align="right">{if $smarty.request.action=='PetientEncounter'}
+         &nbsp;Next PMP Review {else}PMP Review {/if} &nbsp; (<a href='https://gateway.hhs.state.ma.us/authn/login.do' target='_blank' style='display: inline; text-align: right;'>Link to PMP</a>) : &nbsp;&nbsp;</td>
+        <td><span class="dateTime">
+         <pre style="margin-top:0; margin-bottom:0;">
 
-<input class="date_input" tabindex="40" autocomplete="off" type="text" name="next_pcp_visit_c" id="next_pcp_visit_c" onchange='check_date(this);' value="{$datarow.next_pcp_visit_c|date_format:'%m/%d/%Y'}" {if ( time() - strtotime($datarow.next_pcp_visit_c)  > 0   )} style="color:red" {/if} title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pcp_visit_c_trigger"></pre>
-       </span> {literal} 
-       <script type="text/javascript">
-
-Calendar.setup ({
-
-inputField : "next_pcp_visit_c",
-
-ifFormat : "%m/%d/%Y %I:%M%P",
-
-daFormat : "%m/%d/%Y %I:%M%P",
-
-button : "next_pcp_visit_c_trigger",
-
-singleClick : true,
-
-dateStr : "",
-
-startWeekday: 0,
-
-step : 1,
-
-weekNumbers:false
-
-}
-
-);
-
-</script> 
-       {/literal}
-       {/if} </td>
-     </tr>
-     <tr>
-      <td ><br>
-       &nbsp;Next PMP Review <br>
-       <a href='https://gateway.hhs.state.ma.us/authn/login.do' target='_blank' style='display: inline; text-align: right;'>Link to PMP</a><br>
-       <span class="dateTime">
-       <pre style="margin-top:0; margin-bottom:0;">
-
-<input class="date_input" tabindex="56" autocomplete="off" type="text" name="next_pmp_review_due_c" id="next_pmp_review_due_c" onchange='check_date(this);' value="{$datarow.next_pmp_review_due_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pmp_review_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="next_pmp_review_due_c_trigger" ></pre>
-       </span> {literal} 
-       <script type="text/javascript">
+<input class="date_input" tabindex="56" autocomplete="off" type="text" name="next_pmp_review_due_c" id="next_pmp_review_due_c" onchange='check_date(this);' value="{$datarow.next_pmp_review_due_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10" {if ( time() - strtotime($datarow.next_pmp_review_due_c)  > 0   )} style="color:red" {/if} >&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="next_pmp_review_due_c_trigger" ></pre>
+         </span> {literal} 
+         <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1072,26 +964,26 @@ weekNumbers:false
 );
 
 </script> 
-       {/literal} </td>
-     </tr>
-     <tr>
-      <td><br/>
-       &nbsp;Next appointment for:<br/>
-       <select name="pretty" id="pretty" tabindex="60" class="ui-selectmenu-menu">
-        <option id="NOT">Please Select</option>
-        <option id="PT">Physical Therapy</option>
-        <option id="APC">Anesthesia Pain Clinic</option>
-        <option id="INJ">Injection Clinic</option>
-        <option id="BEH">Behavioral Health</option>
-        <option id="STR">Stress Reduction Clinic</option>
-        <option id="NEU">Neuro Pain Clinic</option>
-        <option id="NNP">Non-Network Pain Clinic</option>
-        <option id="OTH">Other</option>
-       </select>
-       <br>
-       <span class="dateTime">
-       <input class="date_input" autocomplete="off" type="text" name="pretty_date" id="pretty_date" tabindex="64" readonly onchange='check_date(this);' value="" title=""  size="11" maxlength="10">
-       <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="pretty_date_trigger"> </span> {literal}<script type="text/javascript">
+         {/literal}</td>
+       </tr>
+       {if $smarty.request.action=='PetientEncounter'}
+       <tr>
+        <td>Next appointment for : &nbsp;&nbsp;</td>
+        <td><select name="pretty" id="pretty" tabindex="60" class="ui-selectmenu-menu">
+          <option id="NOT">Please Select</option>
+          <option id="PT">Physical Therapy</option>
+          <option id="APC">Anesthesia Pain Clinic</option>
+          <option id="INJ">Injection Clinic</option>
+          <option id="BEH">Behavioral Health</option>
+          <option id="STR">Stress Reduction Clinic</option>
+          <option id="NEU">Neuro Pain Clinic</option>
+          <option id="NNP">Non-Network Pain Clinic</option>
+          <option id="OTH">Other</option>
+         </select>
+         <br>
+         <span class="dateTime">
+         <input class="date_input" autocomplete="off" type="text" name="pretty_date" id="pretty_date" tabindex="64" readonly onchange='check_date(this);' value="" title=""  size="11" maxlength="10">
+         <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="pretty_date_trigger"> </span> {literal}<script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1118,9 +1010,9 @@ weekNumbers:false
 );
 
 </script>{/literal}
-       <input title="Add" accesskey="a" class="button" onclick="add_date_to_list()" tabindex="68" type="button" name="button" value="Add" id="Add_button">
-       {literal} 
-       <script type="text/javascript">
+         <input title="Add" accesskey="a" class="button" onclick="add_date_to_list()" tabindex="68" type="button" name="button" value="Add" id="Add_button">
+         {literal} 
+         <script type="text/javascript">
 
 $('img.remove').live('click', function(){
 
@@ -1233,68 +1125,17 @@ document.getElementById('pretty_date').value="";
 }
 
 </script> 
-       {/literal} </td>
-     </tr>
-     <tr>
-      <td rowspan='2'><div style="overflow: auto; "> &nbsp;
-        <ul id="entry_list" style="margin-left:0px;padding-left:1px;">
-        </ul>
-       </div>
-       <input type="hidden" tabindex="23" name="next_appt_other_c" id="next_appt_other_c" size="22" maxlength="20" value="" title=""></td>
-     </tr>
-    </table>
-    {if $smarty.request.action=='aaa'}
-    <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
-     <tr>
-      <td><h3><span style="text-align:centre;" >Contract</span></h3></td>
-     </tr>
-     <tr>
-      <td> Aberrant Behavior Noted: <br>
-       <select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" class="ui-selectmenu-menu" multiple="multiple" style="height:140px">
-        <optgroup>
-        <optgroup label="Monitoring Non-adherence">
-        <option value="RefusePillCount" id="RefusePillCount">Refuse pill count</option>
-        <option value="RefuseUDT" id="RefuseUDT">Refuse UDT</option>
-        </optgroup>
-        <optgroup>
-        <optgroup label="Monitoring Concerning behavior">
-        <option value="IncorrectPillCount" id="IncorrectPillCount">Incorrect pill count</option>
-        <option value="UnexpectedUDTResult" id="UnexpectedUDTResult">Unexpected UDT result</option>
-        </optgroup>
-        <optgroup>
-        <optgroup label="Med management Concerning behavior">
-        <option value="UnsanctionedDoseEscalation" id="UnsanctionedDoseEscalation">Unsanctioned dose escalation</option>
-        </optgroup>
-        <optgroup>
-        <optgroup label="Concerning behavior">
-        <option value="ConcerningBehaviorPMP" id="ConcerningBehaviorPMP">PMP</option>
-        <option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - reports from family, intoxication, disruptive behaviors</option>
-        </optgroup>
-       </select>
-       <br>
-       <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
-       
-       <!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted--></td>
-     </tr>
-     <tr>
-      <td>&nbsp;<br/>
-       <input type="hidden" name="pt_confirms_taking_cx" value="0">
-       <input type="checkbox" tabindex="74" id="pt_confirms_taking_c" name="pt_confirms_taking_c" value="1" title=""   {if ( $datarow.pt_confirms_storing_c  >
-       0   )} checked="checked" {/if} > &nbsp;Patient confirms taking medications as prescribed </td>
-     </tr>
-     <tr>
-      <td>&nbsp;<br/>
-       <input type="hidden" name="pt_confirms_storing_cx" value="0">
-       <input type="checkbox" tabindex="76" id="pt_confirms_storing_c" name="pt_confirms_storing_c"  value="1" title=""  {if ( $datarow.pt_confirms_storing_c  >
-       0   )} checked="checked" {/if}  > &nbsp;Patient confirms storing medications safely </td>
-     </tr>
-     <tr>
-      <td><input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
-       <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
-       0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span><span class="dateTime">
-       <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10">
-       <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; top:6px" border="0" id="narcotic_contract_sign_c_trigger"> </span> {literal} 
-       <script type="text/javascript">
+         {/literal} </td>
+       </tr>{/if}
+       <tr><td colspan="2">&nbsp;</td></tr>
+       <tr>
+     <td colspan="2"> {{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}} &nbsp; {{sugar_action_menu buttons=$header_buttons class="fancymenu" flat=true}}  <input type="button" id="copy-button" onclick="copyToClipboard()" title="Copy information to Logician." value="Copy"> <span id="copy_text_div"></span> &nbsp;
+      <textarea id="clipboard_textarea" style="display:none"></textarea>
+</td>
+    </tr>
+      </table>
+      {literal} 
+      <script type="text/javascript">
 
 Calendar.setup ({
 
@@ -1321,11 +1162,13 @@ weekNumbers:false
 );
 
 </script> 
-       {/literal} </td>
-     </tr>
-    </table>
-    {/if} </td>
-  </tr>
+      {/literal} </td>
+    </tr>
+    
+   </table>
+   <br></td>
+   </tr>
+  
   <tr>
    <td class="buttons"><input type="hidden" name="module" value="{$module}">
     {if isset($smarty.request.isDuplicate) && $smarty.request.isDuplicate eq "true"}
