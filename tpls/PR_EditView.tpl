@@ -237,7 +237,7 @@ var daysdispensed="";
 
 
 
-	var nextUTS = document.getElementById('next_uts_due_c').value;
+	/*var nextUTS = document.getElementById('next_uts_due_c').value;
 
 	if(nextUTS==""){
 
@@ -245,7 +245,7 @@ var daysdispensed="";
 
 	} else
 
-	appendTxt =appendTxt + "Next UTS: " +nextUTS+"\r\n";
+	appendTxt =appendTxt + "Next UTS: " +nextUTS+"\r\n";*/
 
 
 
@@ -261,14 +261,14 @@ var daysdispensed="";
 {/literal}
 	{if $smarty.request.action eq "PatientEncounter"}
 {literal}	
-	var nextPCP = document.getElementById('next_pcp_visit_c').value;
+	/*var nextPCP = document.getElementById('next_pcp_visit_c').value;
 
 	if(nextPCP==""){
 
 	nextPCP= "Information Not Available"
 
 	} else
-	appendTxt =appendTxt + "Next PCP visit: " +nextPCP+"\r\n";
+	appendTxt =appendTxt + "Next PCP visit: " +nextPCP+"\r\n";*/
 {/literal}	
 {/if}
 {literal}
@@ -330,7 +330,7 @@ var daysdispensed="";
 
 	
 
-	var combine = document.getElementById('next_appt_other_c').value;
+	/*var combine = document.getElementById('next_appt_other_c').value;
 
 	if(combine==""){
 
@@ -362,7 +362,7 @@ var daysdispensed="";
 
 	 }
 
-	}
+	}*/
 
 
 
@@ -544,6 +544,7 @@ var daysdispensed="";
    
 
 </script> 
+<!--
 <script>
 
 window.onload = function()
@@ -580,28 +581,28 @@ window.onload = function()
 
 
 
-</script> 
+</script> -->
 <script type="text/javascript">
 
-var a = document.getElementById( "shortcuts" );
+//var a = document.getElementById( "shortcuts" );
 
-a.style.display = "none";
+//a.style.display = "none";
 
-a = document.getElementById( "lastView" );
+//a = document.getElementById( "lastView" );
 
-a.style.display = "none";
+//a.style.display = "none";
 
-a = document.getElementById( "globalLinks" );
+//a = document.getElementById( "globalLinks" );
 
-a.style.display = "none";
+//a.style.display = "none";
 
-a = document.getElementById( "sitemapLink" );
+//a = document.getElementById( "sitemapLink" );
 
-a.style.display = "none";
+//a.style.display = "none";
 
-a = document.getElementById( "search" );
+//a = document.getElementById( "search" );
 
-a.style.display = "none";
+//a.style.display = "none";
 
 </script> 
 {/literal}	
@@ -705,6 +706,7 @@ a.style.display = "none";
     
    </table >
    {/if}
+
    <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
     <tr>
      <td width="50%"> Aberrant Behavior Noted: <br>
@@ -744,6 +746,7 @@ a.style.display = "none";
         <input type="hidden" name="pt_confirms_taking_cx" value="0">
         <input type="hidden" id="pt_confirms_taking_c" name="pt_confirms_taking_c" {if ( $datarow.pt_confirms_taking_c > 0)} value="1" {/if}>
         <input type="hidden" name="pt_confirms_storing_cx" value="0">
+		<input type="hidden" name="next_appt_other_c" id="next_appt_other_c" value="0">
         <input type="hidden" id="pt_confirms_storing_c" name="pt_confirms_storing_c" {if ( $datarow.pt_confirms_storing_c  > 0 )} value="1" {/if}>
         <input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
         <input type="hidden" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" {if ( $datarow.narcotic_contract_in_chart_c  > 0)} value="1" {/if} />
@@ -895,7 +898,8 @@ weekNumbers:false
        </tr>
        {/if}
        <tr>
-        <td align="right">{if $smarty.request.action=='PetientEncounter'}
+        <td align="right">
+{if $smarty.request.action=='PetientEncounter'}
          &nbsp;Next Pill Count {else}Pill Count {/if} : &nbsp;&nbsp;</td>
         <td><span class="dateTime">
          <pre style="margin-top:0; margin-bottom:0;">
@@ -1013,7 +1017,7 @@ weekNumbers:false
          <input title="Add" accesskey="a" class="button" onclick="add_date_to_list()" tabindex="68" type="button" name="button" value="Add" id="Add_button">
          {literal} 
          <script type="text/javascript">
-
+$(document).ready(fucntion() {
 $('img.remove').live('click', function(){
 
 	var inde=$(this).closest('li').index();
@@ -1054,7 +1058,7 @@ $('img.remove').live('click', function(){
 
 	document.getElementById('next_appt_other_c').value=final_value;
 
-	});	
+	});
 
 	
 
@@ -1123,15 +1127,14 @@ document.getElementById('pretty_date').value="";
 
 
 }
-
+});
 </script> 
          {/literal} </td>
        </tr>{/if}
-       <tr><td colspan="2">&nbsp;</td></tr>
-       <tr>
-     <td colspan="2"> {{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}} &nbsp; {{sugar_action_menu buttons=$header_buttons class="fancymenu" flat=true}}  <input type="button" id="copy-button" onclick="copyToClipboard()" title="Copy information to Logician." value="Copy"> <span id="copy_text_div"></span> &nbsp;
-      <textarea id="clipboard_textarea" style="display:none"></textarea>
-</td>
+       <tr><td colspan="2"><span id="copy_text_div"></span> &nbsp;<textarea id="clipboard_textarea" style="display:none"></textarea></td></tr>
+       <tr> <td align="right" style="m-right:10px; !important"> {{sugar_button module="$module" id="SAVE" view="$view" form_id="$form_id" location="HEADER" appendTo="header_buttons"}} &nbsp; {{sugar_action_menu buttons=$header_buttons class="fancymenu" flat=true}} </td>
+	   
+		<td>&nbsp;<br>&nbsp; <input style="font-size:12px !important" type="button" id="copy-button" onclick="copyToClipboard()" title="Copy information to Logician." class="button primary" value="Copy"></td>
     </tr>
       </table>
       {literal} 
