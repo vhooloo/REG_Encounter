@@ -709,8 +709,8 @@ window.onload = function()
 
    <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
     <tr>
-     <td width="50%"> Aberrant Behavior Noted: <br>
-      <select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" multiple="multiple" style="height:190px; width:340px !important">
+     <td width="48%"> Aberrant Behavior Noted: <br>
+      <select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" multiple="multiple" style="height:200px; width:340px !important">
        <optgroup>
        <optgroup label="Monitoring Non-adherence">
        <option value="RefusePillCount" id="RefusePillCount" >Refuse pill count</option>
@@ -731,14 +731,14 @@ window.onload = function()
        <option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - family reports, intoxication, disruptive behavior</option>
        </optgroup>
       </select></td>
-     <td width="50%" style="padding-left:5px !important"><strong>Risk Level &nbsp;
-      <select name='risklvl_c' id='risklvl_c' disabled >
+     <td width="52%" style="padding-left:2px !important; vertical-align:top !important" valign="top"><strong>Risk Level &nbsp;
+      <select name='risklvl_c' id='risklvl_c' disabled style="margin-top:10px" >
        <option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
        <option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
        <option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
        <option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option>
       </select>
-      </strong>&nbsp;&nbsp;<a class="button primary" style="text-decoration:none" href="index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}&flag=1" target="_blank">View</a><br>
+      </strong>&nbsp;&nbsp;<input style="font-size:12px !important" type="button" id="view-button" onclick="window.open('index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}&flag=1')" title="View Risk Evaluation" class="button primary" value="View"><br>
       <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
       
       <!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted--> 
@@ -771,7 +771,7 @@ window.onload = function()
          <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
          0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span></td>
         <td><span class="dateTime">
-         <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="10" maxlength="10"> <img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="narcotic_contract_sign_c_trigger"> </span></td>
+         <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="narcotic_contract_sign_c_trigger"> </span></td>
        </tr>
        <tr>
         <td width="70%" align="right" >Next Rx Refill : &nbsp;&nbsp;</td>
