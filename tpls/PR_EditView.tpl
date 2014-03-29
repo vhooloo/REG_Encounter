@@ -625,7 +625,7 @@ window.onload = function()
  <table style="border-color: rgb( 100, 100, 255); border-style: solid none none none ; border-collapse:collapse; margin-top: 0;vertical-align: top;" width="100%" cellpadding="0" cellspacing="0" border="0" class="edit view panelContainer">
    <tr >
   
-  <td style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid solid solid none; border-width: 2px; margin-top: 0;vertical-align: top;" colspan="3" ><table width="100%" style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
+  <td style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid solid solid solid; border-width: 2px; margin-top: 0;vertical-align: top;" colspan="3" ><table width="100%" style="width:100%;border-color: rgb( 100, 100, 255); border-style:  none none solid none; border-width: 2px; margin-top: 0;vertical-align: top;">
     <tr > {assign var=pro_summary value=":"|explode:$datarow.summary}
      <td  width="66.6%" >Encounter Summary
       <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{if ($encountype == "refill") } Refill {/if}" title=""  onblur="set_session(this.id,this.value);"></td>
@@ -750,7 +750,7 @@ window.onload = function()
         <input type="hidden" id="pt_confirms_storing_c" name="pt_confirms_storing_c" {if ( $datarow.pt_confirms_storing_c  > 0 )} value="1" {/if}>
         <input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
         <input type="hidden" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" {if ( $datarow.narcotic_contract_in_chart_c  > 0)} value="1" {/if} />
-        <input type="hidden" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c" value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" />
+        <!--<input type="hidden" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c" value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" />-->
         <input type="hidden" name="nxt_appt_pain_c" id="nxt_appt_pain_c" value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" >
         <input type="hidden" name="pretty_date" id="pretty_date" value="" >
       
@@ -771,7 +771,7 @@ window.onload = function()
          <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
          0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span></td>
         <td><span class="dateTime">
-         <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="narcotic_contract_sign_c_trigger"> </span></td>
+         <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="" title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="narcotic_contract_sign_c_trigger"> </span></td>
        </tr>
        <tr>
         <td width="70%" align="right" >Next Rx Refill : &nbsp;&nbsp;</td>
