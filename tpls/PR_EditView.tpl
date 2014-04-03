@@ -74,7 +74,7 @@
 
 {literal}
  <style type="text/css">
-
+body{font-family:Verdana,Arial,sans-serif !important}
 table.view { border-collapse:collapse; }
 
 table.view td, table.view th { font-size:80%; } 
@@ -92,7 +92,7 @@ table.view tr:nth-of-type(odd) {
   background-color: #def;
 
 }
-
+.dateTime{vertical-align:top !important; margin:0 !important; padding:0 !important}
 </style>
 {/literal} 
 <script>
@@ -296,7 +296,7 @@ var daysdispensed="";
 
 
 
-	var nextNCM = document.getElementById('nxt_appt_pain_c').value;
+/*	var nextNCM = document.getElementById('nxt_appt_pain_c').value;
 
 	if(nextNCM==""){
 
@@ -305,7 +305,7 @@ var daysdispensed="";
 	} else
 
 	appendTxt =appendTxt + "Next NCM Visit: " +nextNCM+"\r\n";
-
+*/
 	
 
 	/*var lastPMP = document.getElementById('last_pmp_review_done_c').value;
@@ -322,11 +322,24 @@ var daysdispensed="";
 
 	var nextPMP = document.getElementById('next_pmp_review_due_c').value;
 
-	//if(nextPMP==""){
+	if(nextPMP==""){
 
-	//nextPMP= "Information Not Available";
+	nextPMP= "Information Not Available";
 
-	//}
+	}else
+
+	appendTxt =appendTxt + "Next PMP review: " +nextPMP+"\r\n";
+
+	
+	var nextPILL = document.getElementById('next_pill_ct_c').value;
+
+	if(nextPILL==""){
+
+	nextPILL= "Information Not Available";
+
+	}else
+
+	appendTxt =appendTxt + "Next PILL Count: " +nextPILL+"\r\n";
 
 	
 
@@ -473,7 +486,7 @@ var daysdispensed="";
 
 	//appendTxt=appendTxt +"Patient confirms taking medications as prescribed: ";	
 
-	if( document.getElementById('pt_confirms_taking_c').checked)
+	/*if( document.getElementById('pt_confirms_taking_c').checked)
 
 	{
 
@@ -483,11 +496,11 @@ var daysdispensed="";
 
 	 //appendTxt=appendTxt +"NO"+"\r\n";		
 
-	}
+	}*/
 
 	//appendTxt=appendTxt +"Patient confirms storing medications safely: ";
 
-	if( document.getElementById('pt_confirms_storing_c').checked)
+	/*if( document.getElementById('pt_confirms_storing_c').checked)
 
 	{
 
@@ -497,7 +510,7 @@ var daysdispensed="";
 
 	 //appendTxt=appendTxt +"NO"+"\r\n";		
 
-	}
+	}*/
 
 	
 
@@ -661,8 +674,7 @@ window.onload = function()
     {if ($encountype == "encounter") }
     <tr>
      <td colspan="2" ><br/>
-      <input type="checkbox" tabindex="80" id=" 	pt_ben_opioid_c" name="pt_ben_opioid_c" value="1" title=""   {if ( $datarow.pt_ben_opioid_c  >
-      0   )}  checked="checked" {/if} >&nbsp; Patient Benefits from Opioids </td>
+      <input type="checkbox" tabindex="80" id="pt_ben_opioid_c" name="pt_ben_opioid_c" value="1" { if ( $datarow.pt_ben_opioid_c gt 0 ) }  checked="checked" {/if} >&nbsp; Patient Benefits from Opioids </td>
     </tr>
     {/if}
    </table >
@@ -709,7 +721,7 @@ window.onload = function()
 
    <table style="width:100%;border-color: rgb( 100, 100, 255); border-style: solid none none none; border-width: 2px; margin-top: 0;vertical-align: top;">
     <tr>
-     <td width="48%"> Aberrant Behavior Noted: <br>
+     <td width="48%"> <strong>Aberrant Behavior Noted:</strong> <br>
       <select name="abherrent_behaviors_c[]" id="abherrent_behaviors_c" tabindex="60" multiple="multiple" style="height:200px; width:340px !important">
        <optgroup>
        <optgroup label="Monitoring Non-adherence">
@@ -749,8 +761,7 @@ window.onload = function()
 		<input type="hidden" name="next_appt_other_c" id="next_appt_other_c" value="0">
         <input type="hidden" id="pt_confirms_storing_c" name="pt_confirms_storing_c" {if ( $datarow.pt_confirms_storing_c  > 0 )} value="1" {/if}>
         <input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
-        <input type="hidden" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" {if ( $datarow.narcotic_contract_in_chart_c  > 0)} value="1" {/if} />
-        <!--<input type="hidden" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c" value="{$datarow.narcotic_contract_sign_c|date_format:'%m/%d/%Y'}" />-->
+        
         <input type="hidden" name="nxt_appt_pain_c" id="nxt_appt_pain_c" value="{$datarow.nxt_appt_pain_c|date_format:'%m/%d/%Y'}" >
         <input type="hidden" name="pretty_date" id="pretty_date" value="" >
       
@@ -767,14 +778,14 @@ window.onload = function()
       {/if} <br>
       <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
        <tr>
-        <td ><input type="hidden" name="narcotic_contract_in_chart_cx" value="0">
-         <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow.narcotic_contract_in_chart_c  >
+        <td style="vertical-align:bottom !important">
+         <input type="checkbox" tabindex="78" id="narcotic_contract_in_chart_c" name="narcotic_contract_in_chart_c" value="1" title=""  {if ( $datarow1.narcotic_contract_in_chart_c  >
          0   )} checked="checked" {/if}  > <span> &nbsp;Controlled Substance Agreement signed on </span></td>
         <td><span class="dateTime">
-         <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c"   value="" title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="narcotic_contract_sign_c_trigger"> </span></td>
+         <input tabindex="79" class="date_input" autocomplete="off" type="text" name="narcotic_contract_sign_c" id="narcotic_contract_sign_c" title=""  size="11" maxlength="10">&thinsp;<img src="themes/Sugar5/images/jscalendar.gif?v=GogGz9QEok1-e0Ft6rexxQ" alt="Enter Date" style="position:relative; height:16px; top:3px" border="0" id="narcotic_contract_sign_c_trigger"> </span></td>
        </tr>
        <tr>
-        <td width="70%" align="right" >Next Rx Refill : &nbsp;&nbsp;</td>
+        <td style="vertical-align:middle !important" width="70%" align="right" >Next Rx Refill : &nbsp;&nbsp;</td>
         <td width="30%"><span class="dateTime"> {literal} 
          <script type="text/javascript">
 
@@ -898,7 +909,7 @@ weekNumbers:false
        </tr>
        {/if}
        <tr>
-        <td align="right">
+        <td style="vertical-align:middle !important" align="right">
 {if $smarty.request.action=='PetientEncounter'}
          &nbsp;Next Pill Count {else}Pill Count {/if} : &nbsp;&nbsp;</td>
         <td><span class="dateTime">
@@ -934,7 +945,7 @@ weekNumbers:false
 </script>{/literal} </td>
        </tr>
        <tr>
-        <td align="right">{if $smarty.request.action=='PetientEncounter'}
+        <td style="vertical-align:middle !important" align="right">{if $smarty.request.action=='PetientEncounter'}
          &nbsp;Next PMP Review {else}PMP Review {/if} &nbsp; (<a href='https://gateway.hhs.state.ma.us/authn/login.do' target='_blank' style='display: inline; text-align: right;'>Link to PMP</a>) : &nbsp;&nbsp;</td>
         <td><span class="dateTime">
          <pre style="margin-top:0; margin-bottom:0;">
