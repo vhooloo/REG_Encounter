@@ -743,14 +743,9 @@ window.onload = function()
        <option value="ConcerningBehaviorOther" id="ConcerningBehaviorOther">Other - family reports, intoxication, disruptive behavior</option>
        </optgroup>
       </select></td>
-     <td width="52%" style="padding-left:2px !important; vertical-align:top !important" valign="top"><strong>Risk Level &nbsp;
-      <select name='risklvl_c' id='risklvl_c' disabled style="margin-top:10px" >
-       <option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
-       <option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
-       <option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
-       <option label="HIGH" value="9" {if $finalscore eq "gt7"} selected="selected" {/if} >HIGH</option>
-      </select>
-      </strong>&nbsp;&nbsp;<input style="font-size:12px !important" type="button" id="view-button" onclick="window.open('index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}&flag=1')" title="View Risk Evaluation" class="button primary" value="View"><br>
+     <td width="52%" style="padding-left:2px !important; vertical-align:top !important" valign="top"><strong>Risk Level &nbsp;</strong>
+      <input size="10" type="text" name='risklvl_c' id='risklvl_c' readonly value="{if $finalscore eq ""}N/A{elseif $finalscore eq "0-3" }LOW{elseif $finalscore eq "4-7"}Moderate{elseif $finalscore eq "gt7"}High{/if}" />
+      &nbsp;&nbsp;<input style="font-size:12px !important" type="button" id="view-button" onclick="window.open('index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}&flag=1')" title="View Risk Evaluation" class="button primary" value="View"><br>
       <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
       
       <!--<input type="checkbox" tabindex="72" id="aberrant_behavior_noted_c" name="aberrant_behavior_noted_c" value="1" title="" {if ( $datarow.aberrant_behavior_noted_c  > 0   )} checked="checked" {/if}    > &nbsp;Aberrant Behavior Noted--> 
