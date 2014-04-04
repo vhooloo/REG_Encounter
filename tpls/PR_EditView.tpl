@@ -744,7 +744,7 @@ window.onload = function()
        </optgroup>
       </select></td>
      <td width="52%" style="padding-left:2px !important; vertical-align:top !important" valign="top"><strong>Risk Level &nbsp;</strong>
-      <input size="10" type="text" name='risklvl_c' id='risklvl_c' readonly value="{if $finalscore eq ""}N/A{elseif $finalscore eq "0-3" }LOW{elseif $finalscore eq "4-7"}Moderate{elseif $finalscore eq "gt7"}High{/if}" />
+      <input size="10" type="text" name='risklvl_c' id='risklvl_c' readonly value="{if $finalscore eq ""}N/A{elseif $finalscore eq 'N/A'}N/A{elseif $finalscore eq "0-3" }LOW{elseif $finalscore eq "4-7"}Moderate{elseif $finalscore eq "gt7"}High{else}{$finalscore}{/if}" />
       &nbsp;&nbsp;<input style="font-size:12px !important" type="button" id="view-button" onclick="window.open('index.php?module=REG_Patient&action=riskevaluation&patid={$smarty.request.record}&flag=1')" title="View Risk Evaluation" class="button primary" value="View"><br>
       <input type="hidden" name="aberrant_behavior_noted_cx" value="0">
       
