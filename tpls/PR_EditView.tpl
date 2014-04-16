@@ -449,13 +449,13 @@ var daysdispensed="";
 
 	var newrisk = 0;
 
-	newrisk = parseInt(risklevel);
+	newrisk = risklevel;
 
-	if (newrisk >= 0 && newrisk <= 3) risktext = 'LOW';
+	if (newrisk >= "0-3") risktext = 'LOW';
 
-	if (newrisk >= 4 && newrisk <= 6) risktext = 'MODERATE';
+	if (newrisk >= "4-7") risktext = 'MODERATE';
 
-	if (newrisk > 7) risktext = 'HIGH';
+	if (newrisk > "gt7") risktext = 'HIGH';
 
 	
 
@@ -644,7 +644,7 @@ window.onload = function()
       <input type="text"  tabindex="04" name="summary" id="summary" size="22" maxlength="255" value="{if ($encountype == "refill") } Refill {/if}" title=""  onblur="set_session(this.id,this.value);"></td>
      <td  style="width:33.3%;"> Patient Present
       <input  valign="bottom" accesskey=""  type="hidden" name="patient_present_c" value="0">
-      <input tabindex="08"  type="checkbox" id="patient_present_c" name="patient_present_c" value="1" title="" ></td>
+      <input tabindex="08"  type="checkbox" id="patient_present_c" name="patient_present_c" {if ( $datarow.patient_present_c > 0 )} checked="checked" {/if} value="1" title="" ></td>
     </tr>
    </table >
    <table width="100%" >
@@ -662,8 +662,8 @@ window.onload = function()
       <input type="text" tabindex="16"  name="pills_bottle_disp_c" id="pills_bottle_disp_c" size="4" maxlength="4" value="{$datarow.pills_bottle_disp_c}" title=""></td>
      <td style="width:50%;" ><br/>
       Prescription Refilled Early
-      <input  valign="bottom" accesskey=""  type="hidden" name="presc_refill_early_c" value="0">
-      <input tabindex="16"  type="checkbox" id="presc_refill_early_c" name="presc_refill_early_c" value="1" title=""  ></td>
+      <input  valign="bottom" accesskey=""  type="hidden" name="presc_refill_early_c"  value="0">
+      <input tabindex="16"  type="checkbox" id="presc_refill_early_c" name="presc_refill_early_c" { if ( $datarow.presc_refill_early_c gt 0 ) }  checked="checked" {/if} value="1" title=""  ></td>
     </tr>
     {/if} 
     
@@ -689,7 +689,7 @@ window.onload = function()
      <td><input type="hidden" name="med_safety_pulm_prob_cx" value="0">
       <input type="checkbox" tabindex="80" id="med_safety_pulm_prob_c" name="med_safety_pulm_prob_c" value="1" title=""   {if ( $datarow.med_safety_pulm_prob_c  >
       0   )}  checked="checked" {/if} >&nbsp; Pulmonary Problems (O<sub>2</sub>DEP, OSA, COPD) </td>
-     <td  style="width:100%;"><select name='risklvl_c'  id='risklvl_c' disabled>
+     <td  style="width:100%;"><select name='risklvl_c_old'  id='risklvl_c_old' disabled>
        <option label="NA" value="-1" {if $finalscore eq ""} selected="selected" {/if} >NA</option>
        <option label="LOW" value="0" {if $finalscore eq "0-3"} selected="selected" {/if} >LOW</option>
        <option label="MODERATE" value="5" {if $finalscore eq "4-7"} selected="selected" {/if} >MODERATE</option>
